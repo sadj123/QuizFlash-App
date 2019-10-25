@@ -12,7 +12,7 @@ def Flashcard_Review(file_name):
  
     
     for i in lines:
-        (Q,A)=i.split(",")
+        (Q,A)=i.split(":")
         q_and_a[Q] = A
         
 
