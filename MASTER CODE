@@ -1,0 +1,130 @@
+# FLASHCARD AND QUIZ APP FOR COMPUTER PROGRAMMING PROJECT
+
+ 
+
+import random
+
+ 
+
+print("Welcome to the Flashcard and Quiz app!")
+
+print("------------------------------------- \n")
+
+print("The following options are listed below")
+
+print("\n Option A: Create a deck of Flashcards \n Option B: Create a Quiz")
+
+# Here we then need to put the thrid option, if we want to review a deck that was already made
+
+# It will access it by the name we put the archive to it
+
+ 
+
+q1 = input("Which option do you wish to execute?: ")
+
+q5= q1.upper()
+
+if q5 == "A":
+
+   
+
+    
+
+    file_name = input("Under what name will the file be saved?: ")
+
+    new_file = open(file_name + ".txt", "w")
+
+    num_of_cards = int(input("How many flashcards do you want to create?: "))      
+
+    if num_of_cards >0:
+
+        for i in range(num_of_cards):
+    
+            print("\nFlashcard",i + 1)
+    
+            Q = input("\tPlease type in a question: ")
+    
+            A = input("\tPlease type in the corresponding answer: ")
+            p= A.lower()
+    
+            new_file.write(Q + "," + p + "\n")
+    
+        new_file.close()
+    
+       
+    
+        q2 = input("Do you wish to take a quick flashcard quiz?(Y/N): ")
+    
+       
+    
+        if q2 == "Y" or q2=="y":
+    
+           
+    
+            file = open(str(file_name) + ".txt", "r")
+    
+            lines = file.readlines()
+    
+     
+    
+            q_and_a = {}
+    
+            lista=[]
+    
+            count = 0
+    
+        
+    
+            
+    
+            for i in lines:
+                (Q,Z)=i.split(",")
+    
+                q_and_a[Q] = Z
+    
+               
+    
+     
+    
+            while count < len(lines):   
+    
+                pick = random.choice(list(q_and_a.keys()))
+    
+                if pick not in lista:
+    
+                    print(str(pick) + "?")
+    
+                    answer = input("Ingresa la respuesta: ")
+                    answer= answer.lower()
+    
+                    if answer == Z:
+    
+                        print("Great Job! Thats the correct answer!")
+    
+                        lista.append(pick)
+    
+                        count += 1
+    
+                    elif answer != q_and_a[pick]:
+    
+                        print("Sorry thats wrong! The correct answer is: ", A)
+    
+                        lista.append(pick)
+    
+                        count += 1
+    
+          
+    
+        print("Thats it... Its done!")
+    else:
+        raise ValueError("ONLY POSITIVE NUMBERS!!!!, {0} IS NOT ONE.".format(num_of_cards))
+else:
+    raise ValueError("THERE ARE ONLY TWO OPTIONS A OR B!!!, {0} IS NOT ONE".format(q1))
+
+   
+
+ 
+
+#elif q1 == "B":
+
+#    print("\nYou have chosen to create a Quiz!")
