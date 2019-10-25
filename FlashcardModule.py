@@ -22,6 +22,7 @@ def Flashcard_Review(file_name):
             print("\nPregunta", count+1, ": " + "¿" + str(pick) + "?")
             user_answer = str(input("Respuesta: "))
             answer = str(q_and_a[pick]).strip()
+            user_answer = user_answer.lower()
             
             if user_answer == answer:
                 print("¡Muy bien! Esa es la respuesta correcta ")
@@ -39,3 +40,4 @@ def Flashcard_Review(file_name):
                 count_wrong += 1
                 
     print("\nTus resultados son los siguientes:\n\n Respuestas correctas: {0}\n Respuestas incorrectas: {1}\n Puntuación: {2}/{3}\n Porcentaje: {4}% de las preguntas bien".format(count_right, count_wrong, count_right,count,int((count_right/count)*100)))
+  
