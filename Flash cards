@@ -18,7 +18,7 @@ if option_question == "A":
         print("\nFlashcard",i + 1)
         Q = input("\tPor favor ingrese la pregunta: ")
         A = input("\tPor favor ingrese la respuesta correspondiente a la pregunta: ")
-        new_file.write(Q + "," + A + "\n")
+        new_file.write(Q + ":" + A + "\n")
     new_file.close()
     
     q2 = input("Desea tomar un repazo de las cartas? Porfavor escriba si o no: ")
