@@ -9,7 +9,7 @@ print("\n A: Crear una baraja de Flashcards \n B: Crear un Quiz para alguien mas
 option_question = input("Que opcion desearía ejecutar? ")
 
 
-if option_question == "A":
+if option_question == "A" or option_question == "a":
     
     file_name = input("Por favor ingrese el nombre con el cual desea salvar el archivo: ") 
     new_file = open(file_name + ".txt", "w") 
@@ -27,15 +27,19 @@ if option_question == "A":
     new_file.close()
     
     q2 = input("Desea tomar un repazo de las cartas? ")
+    q2= q2.upper()
     
-    if q2 == "Si" or q2 == "si" or q2 == "SI" :
+    if q2 == "SI":
         
         FlashcardModule.Flashcard_Review(file_name)
         print("\nHas terminado repasando las cartas")
         
-    elif q2 == "No" or q2 == "no" or q2 == "NO":
+    elif q2 == "NO":
+        
         print("Gracias por usar nuestro app. Tus cartas se salvaron bajo el nombre que le asignaste al archivo para usarlas en otro tiempo")
-
+    elif q2 != "SI" or q2 != "NO":
+        raise ValueError("Solo se admiten respuestas: si o no")
+    
 #elif option_question == "B":    
 
 elif option_question == "C":
