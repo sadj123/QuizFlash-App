@@ -1,41 +1,40 @@
-import random 
+# FLASHCARD AND QUIZ APP FOR COMPUTER PROGRAMMING PROJECT 
 
-def Flashcard_Review(file_name):
-    file = open(str(file_name) + ".txt")
-    lines = file.readlines()
+import FlashcardModule
 
-    q_and_a = {}
-    lista=[]
-    count = 0
-    count_right = 0
-    count_wrong = 0
- 
+print("Bienvenido a la aplicacion de Flashcards y Quizzes")
+print("------------------------------------- \n")
+print("Las opciones son las siguientes:")
+print("\n A: Crear una baraja de Flashcards \n B: Crear un Quiz \n C: Si ya tienes un archivo con preguntas y respuestas y deseas repasarlas")
+option_question = input("Que opcion deseraia ejeutar? ")
+
+if option_question == "A":
     
-    for i in lines:
-        (Q,A)=i.split(",")
-        q_and_a[Q] = A
+    file_name = input("Por favor ingrese el nombre con el cual desea salvar el archivo: ") 
+    new_file = open(file_name + ".txt", "w") 
+    num_of_cards = int(input("¿Cuantas cartas desea crear? "))       
+    
+    for i in range(num_of_cards):
+        print("\nFlashcard",i + 1)
+        Q = input("\tPor favor ingrese la pregunta: ")
+        A = input("\tPor favor ingrese la respuesta correspondiente a la pregunta: ")
+        new_file.write(Q + "," + A + "\n")
+    new_file.close()
+    
+    q2 = input("Desea tomar un repazo de las cartas? Porfavor escriba si o no: ")
+    
+    if q2 == "si":
         
+        FlashcardModule.Flashcard_Review(file_name)
+        print("\nHas terminado repasando las cartas")
+        
+    elif q2 == "no":
+        print("Gracias por usar nuestro app. Tus cartas se salvaron bajo el nombre que le asignaste al archivo para usarlas en otro tiempo")
 
-    while count < len(lines):    
-        pick = random.choice(list(q_and_a.keys()))
-        if pick not in lista:
-            print("\nPregunta", count+1, ": " + "¿" + str(pick) + "?")
-            user_answer = str(input("Respuesta: "))
-            answer = str(q_and_a[pick]).strip()
-            
-            if user_answer == answer:
-                print("¡Muy bien! Esa es la respuesta correcta ")
-                lista.append(pick)
-                count += 1
-                count_right += 1
-                
-            elif user_answer == "":
-                break
-    
-            else:
-                print("La respuesta es incorrecta. La respuesta correcta es:", answer)
-                lista.append(pick)
-                count += 1
-                count_wrong += 1
-                
-    print("\nTus resultados son los siguientes:\n\n Respuestas correctas: {0}\n Respuestas incorrectas: {1}\n Puntuación: {2}/{3}\n Porcentaje: {4}% de las preguntas bien".format(count_right, count_wrong, count_right,count,int((count_right/count)*100)))
+#elif option_question == "B": 
+#La segunda parte que hará 
+
+elif option_question == "C":
+    chosen_file = input("Por favor Ingrese el nombre del archivo: ")
+    FlashcardModule.Flashcard_Review(chosen_file)
+    print("\nHas terminado repasando las cartas")
