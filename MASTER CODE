@@ -23,7 +23,14 @@ if option_question == "A" or option_question == "a":
         Q = input("\tPor favor ingrese la pregunta (No utilice signos de interrogación): ")
         A = input("\tPor favor ingrese la respuesta correspondiente a la pregunta: ")
         A = A.lower()
-        new_file.write(Q + ":" + A + "\n")
+        new_file.write(Q + ":" + A)
+        c= input("\tSi la pregunta tiene otra respuesta ingresela aqui, sino solo presione ENTER: ")
+        while c != "":
+            new_file.write("," + c)
+            c= input("\tSi la pregunta tiene otra respuesta ingresela aqui, sino solo presione ENTER: ")
+            
+            
+        new_file.write("\n")
     new_file.close()
     
     q2 = input("Desea tomar un repaso de las cartas?: ")
@@ -36,7 +43,7 @@ if option_question == "A" or option_question == "a":
         
     elif q2 == "NO":
         
-        print("Gracias por usar nuestro app. Tus cartas se salvaron bajo el nombre que le asignaste al archivo para usarlas en otro tiempo")
+        print("Gracias por usar nuestro app. Tus cartas se salvaron bajo el nombre que le asignaste al archivo para usarlas en otro tiempo.")
     elif q2 != "SI" or q2 != "NO":
         raise ValueError("Solo se admiten respuestas: si o no")
     
