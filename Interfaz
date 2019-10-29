@@ -1,0 +1,11 @@
+from tkinter import *
+
+raizPrincipal=Tk()
+raizPrincipal.config(bg="#e7593b")
+                     
+framePrincipal=Frame()
+framePrincipal.pack(expand=True, fill="both")
+framePrincipal.config(bg="orange",width=400,height=200)
+
+
+raizPrincipal.mainloop()
