@@ -10,26 +10,38 @@ framePrincipal.config(bg="orange",width=400,height=200)
 #raizPrincipal.grid_columnconfigure(1,weight = 1)
 #raizPrincipal.grid_rowconfigure(1,weight = 1)
 
-framePrincipal.grid_columnconfigure(1,weight = 1)
-framePrincipal.grid_rowconfigure(1,weight = 1)
+framePrincipal.grid_columnconfigure(1,weight = 1)      #Hacemos esto para que al expandir la pantalla los elementos se mantengan centrados.
+#framePrincipal.grid_rowconfigure(1,weight = 1)
+#framePrincipal.grid_rowconfigure(2,weight = 1)
+framePrincipal.grid_rowconfigure(6,weight = 1)
+framePrincipal.grid_rowconfigure(0,weight = 1)
 
 
 
 
-saludo = Label(framePrincipal, text= "Bienvenidos a nuestro programa",anchor="center")
-saludo.grid(row=1,column=1,padx=20,pady=20,)
+
+saludo = Label(framePrincipal, text= "Bienvenidos a nuestro programa",)
+saludo.grid(row=1,column=1,padx=20,pady=20)
 #saludo.grid_columnconfigure(0,weight = 1)
 #saludo.grid_rowconfigure(0,weight = 1)
-saludo1 = saludo = Label(framePrincipal, text= "Elige la opción que quieres usar",anchor="se")
-saludo1.grid(row=2,column=1, padx=10)
-#saludo1.grid_columnconfigure(1,weight = 1)
-#saludo1.grid_rowconfigure(1,weight = 1)
+saludo1 = saludo = Label(framePrincipal, text= "Elige la opción que quieres usar",)
+saludo1.grid(row=2,column=1, padx=10, pady=20)
+saludo1.grid_columnconfigure(1,weight = 1)
+saludo1.grid_rowconfigure(1,weight = 1)
 
-botonFlashcard=Button(framePrincipal, text="Crear Flashcards")
-botonFlashcard.grid(row=3,column=1)
+botonFlashcard=Button(framePrincipal, text="Crear Flashcards",bg="black",fg="white")
+botonFlashcard.grid(row=3,column=1,pady=20)
 
 botonQuiz=Button(framePrincipal, text="Crear un Quizz")
-botonQuiz.grid(row=4,column=1,pady=20,sticky="n")
+botonQuiz.grid(row=4,column=1,pady=20,)
 
+botonHacer=Button(framePrincipal, text="Repasar flashcards")
+botonHacer.grid(row=5,column=1,pady=20,)
+
+vacio = Label(framePrincipal, text= "",anchor="center", bg="orange")
+vacio.grid(row=6,column=1,padx=20,pady=20)
+
+vacio1 = Label(framePrincipal, text= "",anchor="center", bg="orange")
+vacio1.grid(row=0,column=1,padx=20,pady=20)
 
 raizPrincipal.mainloop()
