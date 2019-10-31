@@ -27,6 +27,7 @@ def Flashcard_Review(file_name):
             print("\nPregunta", count+1,": " + "¿" + str(pick) + "?")
             user_answer = str(input("Respuesta: "))
             answer = q_and_a[pick]
+            answer = answer[0]
             user_answer = user_answer.lower()            
 
             if user_answer == answer:
