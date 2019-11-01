@@ -9,10 +9,17 @@ option_question = input("Que opcion desearía ejecutar?: ")
 
 if option_question == "A" or option_question == "a":
     file_name = input("Por favor ingrese el nombre con el cual desea salvar el archivo: ") 
-    new_file = open(file_name + ".txt", "w") 
-    num_of_cards = int(input("¿Cuantas cartas desea crear?: ")) 
-    if num_of_cards < 0:
-        raise ValueError("Solo se puede recibir numeros positivos, {0} no es positivo".format(num_of_cards))
+    new_file = open(file_name + ".txt", "w")
+    from string import ascii_letters
+    h= ascii_letters
+    ncards= input("¿Cuantas cartas desea crear?: ")
+    if ncards in h:
+        raise ValueError("Solo se puede recibir numeros positivos, {0} ni siquiera es un numero.".format(ncards))
+    num_of_cards = int(ncards)
+    
+    
+    if num_of_cards <= 0:
+        raise ValueError("Solo se puede recibir numeros positivos, {0} no es positivo.".format(num_of_cards))
         
     for i in range(num_of_cards):
         print("\nFlashcard",i + 1)
@@ -46,8 +53,13 @@ elif option_question == "B" or option_question == "b":
     if q3 == "B1" or q3 == "b1":
         file_name = input("Por favor ingrese el nombre con el cual desea salvar el archivo: ") 
         new_file = open(file_name + ".txt", "w") 
-        num_of_questions = int(input("¿Cuantas preguntas quieres crear?: ")) 
-        if num_of_questions < 0:
+        from string import ascii_letters
+        p= ascii_letters
+        nquestions= input("¿Cuantas preguntas quieres crear?: ")
+        if nquestions in p:
+            raise ValueError("Solo se puede recibir numeros positivos, {0} ni siquiera es un numero.".format(nquestions))
+        num_of_questions = int(nquestions) 
+        if num_of_questions <= 0:
             raise ValueError("Solo se puede recibir numeros positivos, {0} no es positivo".format(num_of_questions))
     
         for i in range(num_of_questions):
