@@ -1,4 +1,4 @@
-import random #Se importa la librearia Random ya que la usaremos a lo largo de nuestro modulo y por ende el codigo
+import random #Se importa la librearia Random la cual usaremos usaremos a lo largo de nuestro modulo y por ende el codigo
 
 def Flashcard_Review(file_name): #Se define la funcion llamada "Flashcard_Review" que después será incovacada en el master code. Lo que se será ingresado en la funcion es el nombre del archivo  
     file = open(str(file_name) + ".txt") #Ya teniendo el nombre del codigo, el programa habrerá el archivo
