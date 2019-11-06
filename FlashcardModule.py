@@ -80,48 +80,49 @@ def Quiz_Review(file_name): #Se defina la funcion llamada "Quiz_Review" que se i
         quiz_questions_2 = quiz_questions[:] # Esta varaible entonces es un clon de la anteriori, por ende el uso de "[:]" ya que se usara para que las respuestas se muestren en orden aleatoriamente 
         dicto = {} #Se crea un nuevo diccionario vacio que se llama "dicto"
         
-        if pick not in lista:
+        if pick not in lista: #Para prevenir que la misma pregunta se escogida al azar, las preguntas se van agregando a una lsita. El codigo va ejecutar los siguente siempre y cuando la pregunta no se repita
             print("\nPregunta", count+1,": " + "¿" + str(pick) + "?")
             
-            choice_A = str((quiz_questions_2[rng.randrange(4)]))
+            #Como van haber cuatro opciones,entonces el siguente tramo de codigo mustra como las respuestas se asignan aleatoriamente a las letras A,B,C o D para asi conformar el quiz y que cada vez, la respusta se encuentra en una diferente letra entre A,B,C o D
+            choice_A = str((quiz_questions_2[rng.randrange(4)])) #De la lista "quiz_questions_2" que contiene las 4 opciones de respuesta, una se escogera via el uso del randrange ya que escoge un numero aleatorio en el rango 4 y por ende coge la respuesta correspondiente a ese espacio en la lista
             print("    A: " + choice_A.capitalize())
-            quiz_questions_2.remove(choice_A)
-            dicto[choice_A] = "A"
+            quiz_questions_2.remove(choice_A) #Para evitar repeticiones, la pregunta que se escogio se remieve de la lista
+            dicto[choice_A] = "A" #se agraga la pregunta como la clave y la opcion "A" como el valor en el diccionario "dicto" 
             
-            choice_B = str((quiz_questions_2[rng.randrange(3)]))
+            choice_B = str((quiz_questions_2[rng.randrange(3)])) #la segunda opcion se obtiene denueva de la lista, como ahora tiene 3 elementos, escogera unodel rango 3
             print("    B: " + choice_B.capitalize())
-            quiz_questions_2.remove(choice_B)
-            dicto[choice_B] = "B"
+            quiz_questions_2.remove(choice_B) #Para evitar repeticiones, la pregunta que se escogio se remieve de la lista
+            dicto[choice_B] = "B" #se agraga la pregunta como la clave y la opcion "B" como el valor en el diccionario "dicto"
             
-            choice_C = str((quiz_questions_2[rng.randrange(2)]))
+            choice_C = str((quiz_questions_2[rng.randrange(2)])) #La tercera opcion se optiene de la lista que ahora contiene 2 elementos no mas entonces se escoge un numero en el rango de 2
             print("    C: " + choice_C.capitalize())
-            quiz_questions_2.remove(choice_C)
-            dicto[choice_C] = "C"
+            quiz_questions_2.remove(choice_C) #Para evitar repeticiones, la pregunta que se escogio se remieve de la lista
+            dicto[choice_C] = "C" #se agraga la pregunta como la clave y la opcion "C" como el valor en el diccionario "dicto"
             
-            choice_D = str((quiz_questions_2[rng.randrange(1)]))
+            choice_D = str((quiz_questions_2[rng.randrange(1)])) #Como solo queda un elemento dentro de la lista, entocnes este se vuevlve la ultima opcion de las respuestas 
             print("    D: " + choice_D.capitalize())
-            dicto[choice_D] = "D"
+            dicto[choice_D] = "D" #se agraga la pregunta como la clave y la opcion "D" como el valor en el diccionario "dicto"
             
-            quiz_answer = dicto[quiz_questions[0]]
+            quiz_answer = dicto[quiz_questions[0]] #El codigo guardaen la variable "quiz_answer" la respuesta. Como siempre se ingresa la respuesta correcta cuando se crea un quiz, entonces por eso tien el [0] que se encuentra dentro de "dicto"
             user_quiz_answer = input("Respuesta entre A, B, C, o D: ")
-            user_quiz_answer = user_quiz_answer.upper()
+            user_quiz_answer = user_quiz_answer.upper() #Como las respuestas son A,B,C o D, entonces usamos el .upper() para que siempran sean mayusculas. Si el usuario ingresa b minuscula como opcion, entonces el codigo automaticamente lo cambiara a mayuscula para asi evita problemas
             
-            if user_quiz_answer == quiz_answer:
+            if user_quiz_answer == quiz_answer: #Si la respuesta del usuario es correcta, entonces ejecuta el siguente codigo  
                 print("¡Muy bien! Esa es la respuesta correcta. ")
-                lista.append(pick)
-                count += 1
-                count_right += 1
+                lista.append(pick) #La pregunta se agrega a la lista para evitar repeticiones de la pregunta
+                count += 1 #Se incrementa por 1 ya que se respondio la pregunta
+                count_right += 1 #Como el usuario acerto, entonces se incrementa por 1 el numero de preguntas correctas 
                 
-            elif user_quiz_answer == "":
-                count += 1
-                count_wrong += 1
-                break
+            elif user_quiz_answer == "": #El codigo tambien tiene en cuenta si el usuario no responde y presiona enter 
+                count += 1 #Aun se encrementa el contador ya que la pregutnas fue mostrada al usuario 
+                count_wrong += 1 #El codigo luego toma en cuenta la respuesta nula como una uncorrecta y por ende se incremente el contador count_wrong 
+                break #Cuando se presiona entre como respuesta, el codigo se usa el break para salir del loop y ejecutar la primera linea afuera de el 
             
-            else:
-                print("La respuesta es incorrecta. La respuesta correcta es: ", quiz_answer)
-                lista.append(pick)
-                count += 1
-                count_wrong += 1
+            else: #Esta es la opcion si la respuesta del usuario sea incorrecta 
+                print("La respuesta es incorrecta. La respuesta correcta es: ", quiz_answer) #No solo le imprime el mensaje de que esta incorrecta pero tambien logra mostrarle al usuario la respuesta acertada (muestra que opcion era, es decir si fue A,B,C, o D) 
+                lista.append(pick) #Esta pregunta entonces se agrega a la lista para asegurar no vuelve a ser escogida aleatoreamente
+                count += 1 #Aun se encrementa el contador ya que la pregutnas fue mostrada al usuario
+                count_wrong += 1 #El codigo luego toma en cuenta la respuesta nula como una uncorrecta y por ende se incremente el contador count_wrong
                 
     print("\nTus resultados son los siguientes:\n\n Respuestas correctas: {0}\n Respuestas incorrectas: {1}\n Puntuación: {2}/{3}\n Porcentaje: {4}% de las preguntas bien".format(count_right, count_wrong, count_right,count,int((count_right/count)*100)))
-    
+    #La linea de arriba despues imprime los resultados de las preguntas correctas, incorrectas, y el porcentaje de efectividad 
