@@ -75,7 +75,7 @@ def Quiz_Review(file_name): #Se defina la funcion llamada "Quiz_Review" que se i
         
     print("\nRecuerde que si quiere terminar, presiones ENTER. Al hacerlo, la respuesta automaticamente será incorrecta...")    
     while count < len(lines): #Como count = 0, el codigo entra dentro de este ciclo while. Solo saldra de este ciclo cuando count iguala al numero de lineas         
-        pick = random.choice(list(q_and_a.keys()))  pick = random.choice(list(q_and_a.keys())) #El random.choice elige una valor dentro de la lista de las llaves del diccionarios. Por ende escoge una pregunta al azar
+        pick = random.choice(list(q_and_a.keys())) #El random.choice elige una valor dentro de la lista de las llaves del diccionarios. Por ende escoge una pregunta al azar
         quiz_questions = q_and_a[pick] # Esta variable entonces contiene las diferentes respuestas para la pregunta 
         quiz_questions_2 = quiz_questions[:] # Esta varaible entonces es un clon de la anteriori, por ende el uso de "[:]" ya que se usara para que las respuestas se muestren en orden aleatoriamente 
         dicto = {} #Se crea un nuevo diccionario vacio que se llama "dicto"
