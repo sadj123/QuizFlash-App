@@ -13,11 +13,11 @@ def Flashcard_Review(file_name): #Se define la funcion llamada "Flashcard_Review
     for i in lines: #Por cada linea que se encuentre en el archivo, el codigo ejecutará este ciclo for
         (Q,A)=i.split(":") #Dentro del archivo, la pregunta y la respuesta estan separadas por ":" entonces el metodo split logra separarlo
         p= A.split(";") #El codigo tiene la opcion de que la pregunta tiene mas de una respuesta entonces las otras respuestas esta separadas por ";" entonces el metodo split cumple la funcion de separlas 
-        z= len(p) 
-        k= p[z-1]
-        k= k.strip()
-        p.pop()
-        p.append(k)
+        z= len(p)### 
+        k= p[z-1]###
+        k= k.strip()###
+        p.pop()###
+        p.append(k)###
         q_and_a[Q] = p # Aqui las preguntas y sus respuestas van siendo agregadas al diccionario creado en la linea 7. La pregutnas se vuelve la llave y la respuesta el valor 
 
     print("\nRecuerde que si quiere terminar, presiones ENTER. Al hacerlo, la respuesta automaticamente será incorrecta...")
@@ -65,11 +65,11 @@ def Quiz_Review(file_name): #Se defina la funcion llamada "Quiz_Review" que se i
     for i in lines:
         (Q,A)=i.split(":") #Dentro del archivo, la pregunta y la respuesta estan separadas por ":" entonces el metodo split logra separarlo
         p= A.split(";") #Como esta parte es de quizzes, entonces obligatoriamente tiene una respuesta correcta y tres malas que se separan por ";" 
-        z= len(p) 
-        k= p[z-1]
-        k= k.strip()
-        p.pop()
-        p.append(k)
+        z= len(p)### 
+        k= p[z-1]###
+        k= k.strip()###
+        p.pop()###
+        p.append(k)###
         q_and_a[Q] = p # Aqui las preguntas y sus respuestas van siendo agregadas al diccionario creado en la linea 59d. La pregutnas se vuelve la llave y la respuesta el valor 
 
         
