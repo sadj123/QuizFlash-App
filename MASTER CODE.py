@@ -26,11 +26,11 @@ if option_question == "A" or option_question == "a": #Si el usuario escoge la op
         A = input("\tPor favor ingrese la respuesta correspondiente a la pregunta: ") #El usuario entra la respuesta correspondiente 
         A = A.lower() #Para evitar confusion con letras mayusculas o minusculas, la respuesta que ingreso es estudiante se convierte toda a minuscula 
         new_file.write(Q + ":" + A) #Dentro de nuestro archivo, se escribira la pregunta y la respuesta separados por un ":"
-        c= input("\tSi la pregunta tiene otra respuesta ingresela aqui, sino solo presione ENTER: ")
-        while c != "":
-            new_file.write(";" + c)
-            c= input("\tSi la pregunta tiene otra respuesta ingresela aqui, sino solo presione ENTER: ")
-        new_file.write("\n")
+        c= input("\tSi la pregunta tiene otra respuesta ingresela aqui, sino solo presione ENTER: ")###
+        while c != "":###
+            new_file.write(";" + c)###
+            c= input("\tSi la pregunta tiene otra respuesta ingresela aqui, sino solo presione ENTER: ")###
+        new_file.write("\n")###
     new_file.close() #Ya que toda la informacion se ha escrito dentro del archivo, el archivo se cierra con .close()
     
     q2 = input("¿Desea tomar un repaso de las cartas?: ") #Aqui se pregunta si es que el usuario quiere repazar las cartas que creo ahora mismo o si desea usarlas mas tarde (que se vuelve la opcion C mas adelante)
