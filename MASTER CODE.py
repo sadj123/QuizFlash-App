@@ -1,41 +1,42 @@
 # FLASHCARD AND QUIZ APP FOR COMPUTER PROGRAMMING PROJECT 
 
-import FlashcardModule
+import FlashcardModule #Como ya se creo el modulo "FlashcardModule" entonces, dentro de este codigo, se importara este modulo para usar funciones definidas alla
+#Las siguientes 4 lineas solamente imprime la introduccion al codigo, dandole la bienvenida al usuario y mostrandole las opciones que puede escoger
 print("Bienvenido a la aplicacion de Flashcards y Quizzes")
 print("------------------------------------- \n")
 print("Las opciones son las siguientes:")
 print("\n A: Crear una baraja de Flashcards \n B: Crear o tomar un Quiz \n C: Si ya tienes una baraja de flashcards y deseas repasarla(No adimte la opción con un quiz)")
-option_question = input("Que opcion desearía ejecutar?: ")
+option_question = input("Que opcion desearía ejecutar?: ") # El codigo le pregunta al usuario cual de las opciones desea implementar y la guarda dentro de la variable "option_question"
 
-if option_question == "A" or option_question == "a":
-    file_name = input("Por favor ingrese el nombre con el cual desea salvar el archivo: ") 
-    new_file = open(file_name + ".txt", "w")
-    from string import ascii_letters
-    h= ascii_letters
-    ncards= input("¿Cuantas cartas desea crear?: ")
-    if ncards in h:
+if option_question == "A" or option_question == "a": #Si el usuario escoge la opcion A (independientemente si lo escribe con mayuscila o minuscula) entonces entre a este tramo de codigo
+    file_name = input("Por favor ingrese el nombre con el cual desea salvar el archivo: ") #Aqui se le pide que el suuraio nombre el archivo donde se salvara la informacion para asi volver a usar la misma informacion despues 
+    new_file = open(file_name + ".txt", "w")#Se abre el archivo con el nombre que le coloco el usuario y es un archivo en el cual se escribe (si el nombre del archivo ya existe, entonces editara ese archivo)
+    from string import ascii_letters # Se importa la libreria string y solo se accede a la funcion de ascii_letters
+    h= ascii_letters #h se vuelve entonces cualquier letra que se encuentra en la libreria importada
+    ncards= input("¿Cuantas cartas desea crear?: ")#Se le pregunta al usuario cuantas cartas quiere hacer y se guarda a la variable "ncacrds"
+    if ncards in h: #Entonces, si lo que ingreso el usuario no es un numero, el mensaje escrito en la proxima linea de codigo se muestra
         raise ValueError("Solo se puede recibir numeros positivos, {0} ni siquiera es un numero.".format(ncards))
-    num_of_cards = int(ncards)
+    num_of_cards = int(ncards) #El umero de cartas se guerda en una nueva variable para evitar confusion y mejorar la legibilidad del codigo
     
     
-    if num_of_cards <= 0:
+    if num_of_cards <= 0:#Si el usuario ingresa un numero negativo al tiempo de crear cartas, se presentara el mensaje en la proxima linea de codigo
         raise ValueError("Solo se puede recibir numeros positivos, {0} no es positivo.".format(num_of_cards))
         
-    for i in range(num_of_cards):
+    for i in range(num_of_cards): #Por cada numero de cartas que el usuario desee crear, el codigo dentro del for loop se va a ejecutar
         print("\nFlashcard",i + 1)
-        Q = input("\tPor favor ingrese la pregunta (No utilice signos de interrogación): ")
-        A = input("\tPor favor ingrese la respuesta correspondiente a la pregunta: ")
-        A = A.lower()
-        new_file.write(Q + ":" + A)
+        Q = input("\tPor favor ingrese la pregunta (No utilice signos de interrogación): ") #El usuario ingresa la pregunta
+        A = input("\tPor favor ingrese la respuesta correspondiente a la pregunta: ") #El usuario entra la respuesta correspondiente 
+        A = A.lower() #Para evitar confusion con letras mayusculas o minusculas, la respuesta que ingreso es estudiante se convierte toda a minuscula 
+        new_file.write(Q + ":" + A) #Dentro de nuestro archivo, se escribira la pregunta y la respuesta separados por un ":"
         c= input("\tSi la pregunta tiene otra respuesta ingresela aqui, sino solo presione ENTER: ")
         while c != "":
             new_file.write(";" + c)
             c= input("\tSi la pregunta tiene otra respuesta ingresela aqui, sino solo presione ENTER: ")
         new_file.write("\n")
-    new_file.close()
+    new_file.close() #Ya que toda la informacion se ha escrito dentro del archivo, el archivo se cierra con .close()
     
-    q2 = input("¿Desea tomar un repaso de las cartas?: ")
-    q2= q2.upper()
+    q2 = input("¿Desea tomar un repaso de las cartas?: ") #Aqui se pregunta si es que el usuario quiere repazar las cartas que creo ahora mismo o si desea usarlas mas tarde (que se vuelve la opcion C mas adelante)
+    q2= q2.upper() #Vuelve el input del usuario a letras mayusculas
 
     if q2 == "SI":
         FlashcardModule.Flashcard_Review(file_name)
