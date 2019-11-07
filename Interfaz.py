@@ -28,19 +28,16 @@ def clear():                                        #Definimos una función para
     
 #def guardar_archivo(entradaNombreTexto):
 #    new_file = open(entradaNombreTexto.get() + ".txt", "w")
-def guardarFlashcard(pregunta,respuesta,boton):
+def guardarFlashcard(pregunta,respuesta):
     global contador
     global archivo
     question = pregunta.get()
     answer = respuesta.get()
     answer.lower()
     archivo.write(question + ":" + answer+"\n")
+    clear()
     contador += 1
-    pregunta.delete(0,1000)
-    respuesta.delete(0,1000)
-    boton.destroy()
-        
-    
+    hacer_flashcards(numero)
 
 def ultimaFlashcard(pregunta,respuesta):
     global archivo
@@ -57,34 +54,32 @@ def ultimaFlashcard(pregunta,respuesta):
     
         
 
-def hacer_flashcards(entradaCartas):
-    global contador
-    numero = entradaCartas.get()
+def hacer_flashcards(numero_flashcards):
+    global contador 
     clear()
-    crearVentana(5)
-    pregunta = Label(framePrincipal, text = "Ingrese la pregunta")
-    pregunta.grid(row=1,column=1)
-    entrada_pregunta = Entry(framePrincipal)
-    entrada_pregunta.grid(row=2,column=1, pady=20)
-    respuesta_correcta = Label(framePrincipal, text = "Ingrese la respuesta correcta")
-    respuesta_correcta.grid(row=3,column=1)
-    entrada_respuesta = Entry(framePrincipal)
-    entrada_respuesta.grid(row=4,column=1, pady=20)
-    
-    for i in range (1,int(numero)+1): #contador < int(numero):
-        boton_continuar = Button(framePrincipal, text="Continuar", command=lambda:guardarFlashcard(entrada_pregunta,entrada_respuesta,boton_continuar))
-        boton_continuar.grid(row=5,column=1)
+    if contador < int(numero_flashcards):
+        crearVentana(6)
+        pregunta = Label(framePrincipal, text = "Ingrese la pregunta")
+        pregunta.grid(row=2,column=1)
+        entrada_pregunta = Entry(framePrincipal)
+        entrada_pregunta.grid(row=3,column=1, pady=20)
+        respuesta_correcta = Label(framePrincipal, text = "Ingrese la respuesta correcta")
+        respuesta_correcta.grid(row=4,column=1)
+        entrada_respuesta = Entry(framePrincipal)
+        entrada_respuesta.grid(row=5,column=1, pady=20)
+        textosuperior = StringVar()
+        textosuperior.set("Flashcard "+ str(contador))
+        arriba = Label(framePrincipal, textvariable=textosuperior,pady = 30) 
+        arriba.grid(row=1,column=1)
+        boton_continuar = Button(framePrincipal, text="Continuar", command=lambda:guardarFlashcard(entrada_pregunta,entrada_respuesta,int(numero_flashcards)))
+        boton_continuar.grid(row=6,column=1)
         
-        
-        
-#        if 
-#        contador += 1
     if contador == int(numero):
-        list = framePrincipal.grid_slaves(5,1)             #Buscamos todos los elementos que están ordenados en el grid
+        list = framePrincipal.grid_slaves(6,1)             #Buscamos todos los elementos que están ordenados en el grid
         for l in list:  
             l.destroy()
             boton_finalizar = Button(framePrincipal, text="Finalizar", command=lambda:ultimaFlashcard(entrada_pregunta,entrada_respuesta))
-            boton_finalizar.grid(row=5,column=1)
+            boton_finalizar.grid(row=6,column=1)
         
         
         
@@ -102,7 +97,7 @@ def ventana_cartas(entradaNombreTexto):
     entradaCartas = Entry(framePrincipal)#)
 #    a = numeroflashcards
     entradaCartas.grid(row=2,column=1, pady=20)
-    continuar = Button(framePrincipal, text="Continuar", command=lambda:hacer_flashcards(entradaCartas))
+    continuar = Button(framePrincipal, text="Continuar", command=lambda:hacer_flashcards(entradaCartas.get()))
     continuar.grid(row=3,column=1)
 #    if int(entradaCartas.get()) <0:
 #        raise ValueError("Solo se puede recibir numeros positivos, {0} no es positivo".format(num_of_cards))
