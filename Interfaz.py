@@ -1,6 +1,6 @@
 from tkinter import *
 
-raizPrincipal=Tk()                                      #Se crea la raíz que es la ventana principal.
+raizPrincipal=Tk()                                      #Se crea la raíz que es la ventana principal
 raizPrincipal.config(bg="#e7593b")
                      
 framePrincipal=Frame()                                  #Se crea un frame que es donde se colocan todos los widgets que queremos
