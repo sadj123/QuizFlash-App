@@ -27,10 +27,10 @@ def Flashcard_Review(file_name): #Se define la funcion llamada "Flashcard_Review
             print("\nPregunta", count+1,": " + "¿" + str(pick) + "?")
             user_answer = str(input("Respuesta: ")) #La respuesta que escriba el usuario se salva dentro de la variable "user_answer" 
             answer = q_and_a[pick] #La respuesta de la pregunta escogida se encuentra dentro del diccionario que se crea en la linea 21 
-            answer = answer[0] #Como hay la oportudinad de que haya mas de una respuesta, la respuesta se encuentra en el espacio 0 de la lista
+             #Como hay la oportudinad de que haya mas de una respuesta, la respuesta se encuentra en el espacio 0 de la lista
             user_answer = user_answer.lower() #Se cambian todas las letras a minusculas para evitar confusiones con mayusculas             
 
-            if user_answer == answer: #Si la respuesta del usuario concuerda con la respuesta que tiene el codigo, entonces ejecta el codigo dentro del if statment 
+            if user_answer in answer: #Si la respuesta del usuario concuerda con la respuesta que tiene el codigo, entonces ejecta el codigo dentro del if statment 
                 print("¡Muy bien! Esa es la respuesta correcta ")
                 lista.append(pick) #Esta pregunta entonces se agrega a la lista para asegurar no vuelve a ser escogida aleatoreamente a la hora de repasar 
                 count += 1 #El count se encrementa por 1
