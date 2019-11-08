@@ -28,7 +28,9 @@ def clear():                                        #Definimos una función para
     
 #def guardar_archivo(entradaNombreTexto):
 #    new_file = open(entradaNombreTexto.get() + ".txt", "w")
-def guardarFlashcard(pregunta,respuesta):
+        
+#---------------------- Hacer flashcards-----------------------------------------------------------
+def guardarFlashcard(pregunta,respuesta,numero):
     global contador
     global archivo
     question = pregunta.get()
@@ -74,12 +76,22 @@ def hacer_flashcards(numero_flashcards):
         boton_continuar = Button(framePrincipal, text="Continuar", command=lambda:guardarFlashcard(entrada_pregunta,entrada_respuesta,int(numero_flashcards)))
         boton_continuar.grid(row=6,column=1)
         
-    if contador == int(numero):
-        list = framePrincipal.grid_slaves(6,1)             #Buscamos todos los elementos que están ordenados en el grid
-        for l in list:  
-            l.destroy()
-            boton_finalizar = Button(framePrincipal, text="Finalizar", command=lambda:ultimaFlashcard(entrada_pregunta,entrada_respuesta))
-            boton_finalizar.grid(row=6,column=1)
+    if contador == int(numero_flashcards):
+        crearVentana(6)
+        pregunta = Label(framePrincipal, text = "Ingrese la pregunta")
+        pregunta.grid(row=2,column=1)
+        entrada_pregunta = Entry(framePrincipal)
+        entrada_pregunta.grid(row=3,column=1, pady=20)
+        respuesta_correcta = Label(framePrincipal, text = "Ingrese la respuesta correcta")
+        respuesta_correcta.grid(row=4,column=1)
+        entrada_respuesta = Entry(framePrincipal)
+        entrada_respuesta.grid(row=5,column=1, pady=20)
+        textosuperior = StringVar()
+        textosuperior.set("Flashcard "+ str(contador))
+        arriba = Label(framePrincipal, textvariable=textosuperior,pady = 30) 
+        arriba.grid(row=1,column=1)
+        boton_finalizar = Button(framePrincipal, text="Finalizar", command=lambda:ultimaFlashcard(entrada_pregunta,entrada_respuesta))
+        boton_finalizar.grid(row=6,column=1)
         
         
         
@@ -104,8 +116,7 @@ def ventana_cartas(entradaNombreTexto):
 #    for i in range(entradaCartas.get()):
 
           
-
-def guardar_nombre_texto():
+def opcionFlashcards():
     clear()
     crearVentana(3)
     pregunta= Label(framePrincipal, text = "Por favor ingrese el nombre con el cual desea guardar el archivo: ")
@@ -115,13 +126,32 @@ def guardar_nombre_texto():
     continuar = Button(framePrincipal, text="Continuar",command=lambda:ventana_cartas(entradaNombreTexto))
     continuar.grid(row=3,column=1,pady=30)
 
-def opcionFlashcards():
-    guardar_nombre_texto()
-    
-
-def aver():
+#-------------------------------Quiz-------------------------------------------------------
+def ventana_nopreguntas(entradaNombreTexto):
+    global archivo
+    archivo = open(entradaNombreTexto.get() + ".txt", "w")
     clear()
-#    guardar_nombre_texto()
+    crearVentana(3)
+    pregunta1= Label(framePrincipal, text = "¿Cuántas cartas desea crear?")
+    pregunta1.grid(row=1,column=1)
+#    numeroflashcards= IntVar()
+#    numeroflashcards=""
+    entradaCartas = Entry(framePrincipal)#)
+#    a = numeroflashcards
+    entradaCartas.grid(row=2,column=1, pady=20)
+    continuar = Button(framePrincipal, text="Continuar", command=lambda:hacer_flashcards(entradaCartas.get()))
+    continuar.grid(row=3,column=1)
+
+def opcionQuiz():
+    clear()
+    crearVentana(3)
+    pregunta= Label(framePrincipal, text = "Por favor ingrese el nombre con el cual desea guardar el archivo: ")
+    pregunta.grid(row=1,column=1)
+    entradaNombreTexto= Entry(framePrincipal)
+    entradaNombreTexto.grid(row=2,column=1, pady=20)
+    continuar = Button(framePrincipal, text="Continuar",command=lambda:ventana_nopreguntas)
+    continuar.grid(row=3,column=1,pady=30)
+
 
     
 def ventana_inicial():  
