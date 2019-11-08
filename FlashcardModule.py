@@ -81,7 +81,7 @@ def Quiz_Review(file_name): #Se defina la funcion llamada "Quiz_Review" que se i
         dicto = {} #Se crea un nuevo diccionario vacio que se llama "dicto"
         
         if pick not in lista: #Para prevenir que la misma pregunta se escogida al azar, las preguntas se van agregando a una lista. El codigo va ejecutar las siguentes lineas siempre y cuando la pregunta no se repita
-            print("\nPregunta", count+1,": " + "¿" + str(pick) + "?"
+            print("\nPregunta", count+1,": " + "¿" + str(pick) + "?")
                   
             #Como van haber cuatro opciones,entonces el siguente tramo de codigo mustra como las respuestas se asignan aleatoriamente a las letras A,B,C o D para asi conformar el quiz y que cada vez, la respusta se encuentra en una diferente letra 
             choice_A = str((quiz_questions_2[rng.randrange(4)])) #De la lista "quiz_questions_2" que contiene las 4 opciones de respuesta, una se escogera via el uso del randrange ya que escoge un numero aleatorio en el rango 4 (porque hay 4 opciones) y el numer escogido corresponde al espacio en la lista 
