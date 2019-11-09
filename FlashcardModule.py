@@ -1,7 +1,7 @@
 import random                                                                    #Se importa la librearia Random la cual usaremos a lo largo de nuestro modulo y por ende el codigo
 
 def Flashcard_Review(file_name):                                                 #Se define la funcion llamada "Flashcard_Review" que después será incovacada en el master code. La funcion recibirá el nombre del archivo  
-    file = open(str(file_name) + ".txt")                                         #Ya teniendo el nombre del archivo, el programa habrerá para después leer el contenido
+    file = open(str(file_name) + ".txt")                                            #Ya teniendo el nombre del archivo, el programa habrerá para después leer el contenido
     lines = file.readlines()                                                     #El codigo lee el archivo linea por linea 
 
     q_and_a = {}                                                                 #Se crea un diccionario vacio asignado a la variable "q_and_a"
