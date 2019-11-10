@@ -1,0 +1,10 @@
+Que es un objeto mutable:objeto cuyo contenido puede cambiar despues de su definicion ;objeto cuyo contenido no puede cambiar despeus de su definicion ;objeto de tipo lsita unicamente;objeto de tipo diccionario unicamente
+Cual es el operador que permite acceder a elementos dentro de una lista:[];{};();:
+Que hace el metodo append:permite añadir un elemento al final de la lista;permite añadir un elemento al principio de la lista;permite añadir un elemento al final de una cadena;permite añadir un elemento al principio de una cadena
+Que hace el metodo pop:permite eliminar el ultimo elemento de la lista;permite eliminar el primer elemento de una lista;permite eliminar el ultimo elemento de una cadena;permite eliminar el primer elemeneto de una cadena
+Que operador se usa para clonar una lista:[:];[;];{:};{;}
+Que es un diccionario:estructura compuesta de pares clave y valor ;estructura compuesta de pares valor y valor;estructura compuesta de pares calve y clave;estructura compuesta de pares string y tupla
+Cuales de las siguientes respuestas tienen objetos mutables:listas y diccionarios;tuplas y strings;strings y listas;tuplas y diccionarios
+Que hace el metodo keys:retorna una lista con las claves del diccionario;retorna una cadena con las claves del diccionario;retorna una lista con los valores del diccionario;retorna una lista con las claves y valores del diccionario
+Que hace el metodo values:retorna una lista con los valores del diccionario;retorna una cadena con los valores del diccionario;retorna una lista con los valores de las claves del diccionario;retorna una cadena con los valores de las claves del diccionario
+Que es un modulo:archivo de python que contiene unicamente funciones para ser usadas en otros programas de python;archivo de c++ que contiene unicamente funciones para ser usadas en otros programas de c++;archivo de python que unicamente contiene clases para ser usadas en otros programas de python;archivo de c++ que unicamente contiene clases para ser usadas en otros programas de c++

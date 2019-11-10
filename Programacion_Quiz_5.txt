@@ -1,0 +1,10 @@
+El rango de un identificador es la region del programa en la que se puede acceder a este, cuales son los tipos de rango:local, global, integrado;local, inteligente, global;integrado, divergente, global;inteligente, nacional, mundial
+Como se denominan las variables y funciones definidas dentro de un modulo:atributos y metodos;metodos y atributos;variables y funciones;las dos se llaman metodos
+Cual es la funcion del operador punto (.):permite acceder al espacio de nombres del modulo en cuestion;permite acceder al espacio de nombres del modulo math;permite acceder al espacio de nombres de todos los modulos de python;permite acceder a las funciones de todos los modulos de python
+Cuales de las siguientes opciones son correctas:todas;import math;from math import sqrt;from math import * 
+Que es un archivo:la manera no volatil de guardar informacion, usualmente en el disco duro;manera volatil de guardar informacion, usualmente en el disco duro;manera no volatil de guardar modulos, usualmente en el disco duro;manera volatil de guardar modulos, usualmente en el disco duro
+Al metodo __init__ se le denomina...:constructor;iniciador;metodo iniciador;simplemente __init__
+Como se les llama a funciones miembros de una clase:metodos;argumentos;parametros;funciones de clase
+Que hace el metodo __str__:permite imprimir una cadena con informacion de la instancia;permite imprimir una lista con informacion de la instancia;permite guardar una cadena con informacion de la instancia;permite guardar una lista con informacion de la instancia
+Que es herencia:capacidad de definir una nueva clase que es una version modificada de una clase existente;capacidad de definir una nueva funcion que es una version modificada de una funcion existente;capacidad de definir una nueva clase que es una version modificada de una funcion existente;capacidad de definir una nueva funcion que es una version modificada de una clase existente
+Es posible que una clase hija herede de mas de una clase madre:si;no;si porque todas las clases hijas heredan de 2 clases ;no porque es imposible que una clase hija tenga mas de una clase madre

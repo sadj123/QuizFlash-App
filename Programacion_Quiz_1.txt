@@ -1,0 +1,10 @@
+Que es el interprete de Python:programa que traduce de un lenguaje humanamente legible a un lenguaje de ensamblador;programa que traduce de un lenguaje ensamblador a un lenguaje humanamente legible;un codigo que traduce de un lenguaje humanamente legible a un lenguaje de ensamblador;la aplicación spyder 
+Que significa IDE:integrated development environment;inteligent developed encryption;intelligent device encryption ;integrated development electronics
+Con que caracter se empieza un comentario en Python:#;%;&;@
+Cuales son los tipos de valores:string, integer, floating point number y boolean;string, whole number, double, true y false;int, char y double;integer, string y bool
+Que hace el operador = en Python:asigna el valor a una variable;actua exactamente como el signo = en matematicas;el operador = no existe dentro de python;asigna el valor a una variable siempre y cuando este valor sea un numero 
+Cual de estos nombres de variables causarian un error :variable 1;var1;var_1;_variable1_
+Cual es la precedencia de las operaciones matematicas :parentisis, exponenciacion, multiplicacion y division, suma y resta;parentisis, exponenciacion, multiplicacion, division, suma, resta;suma y resta, parentisis, multiplicacion, division, exponenciacion ;parentisis, exponenciacion, division, suma, resta, multiplicacion
+Que hacen los operadores + y * sobre cadenas:el operador + realiza la concatenacion y el operador * realiza la repeticion;el operador + realiza repeticion y el operador * realiza concatenacion;los dos operadores hacen concatenacion ;los dos operadores hace repeticion 
+Que hace la operacion modulo (%):opera sobre enteros y retorna el residuo cuando el primer numero es dividido por el segundo;opera sobre numeros reales y retorna el residuo cuando el primer numero es dividido por el segundo;actua como el operador /;el operador % no existe dentro de python 
+Cuales de las siguentes son palabras reservadas:true, if, def, global, else, y elif;and, as, class y continue;elseif, if, is y if;true, false, yield y pass
