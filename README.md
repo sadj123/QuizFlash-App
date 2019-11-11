@@ -10,4 +10,6 @@ Si ejecuta el codigo principal "MasterCode" la herramienta se abrira en la conso
 
 Por otra parte la puede ejecutar desde el codigo "Interfaz", la interfaz es un proceso largo y limita un poco la herramienta como en aspectos donde solo admite una respuesta.
 
-Esperemos que les guste y les sea de mucha utilidad. :)
+Esperemos que les guste y les sea de mucha utilidad.
+
+:)
