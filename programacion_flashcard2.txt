@@ -1,0 +1,5 @@
+Como se llama el lenguaje que utiliza Spyder:python
+Que funcion permite que se termine un ciclo/proceso:break
+Que funcion permite que se muestre un texto en la consola:print
+Como se llama la tipologia de los caracteres:string
+Como se llama la tipologia de los numeros racionales:float

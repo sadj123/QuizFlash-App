@@ -1,0 +1,5 @@
+Mencione una funcion iterativa:for;while
+Cual es una funcion condicional:if;elif;else;if not
+Que libreria permite invocar funciones aleatorias:random
+Cual es un operador booleano en python:==;or;!=;and
+Que funcion permite al usuario ver cuando comete un error:raise
