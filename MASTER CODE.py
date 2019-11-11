@@ -26,11 +26,11 @@ if option_question == "A" or option_question == "a":                            
         A = input("\tPor favor ingrese la respuesta correspondiente a la pregunta: ")                                      #El usuario entra la respuesta correspondiente 
         A = A.lower()                                                                                                      #Para evitar confusion con letras mayusculas o minusculas, la respuesta que ingreso el usuario se convierte toda a minuscula 
         new_file.write(Q + ":" + A)                                                                                        #Dentro de nuestro archivo, se escribirá la pregunta y la respuesta separados por un ":"
-        c= input("\tSi la pregunta tiene otra respuesta ingresela aqui, sino solo presione ENTER: ")                       ###
-        while c != "":                                                                                                     ###
-            new_file.write(";" + c)                                                                                        ###
-            c= input("\tSi la pregunta tiene otra respuesta ingresela aqui, sino solo presione ENTER: ")                   ###
-        new_file.write("\n")                                                                                               ###
+        c= input("\tSi la pregunta tiene otra respuesta ingresela aqui, sino solo presione ENTER: ")                       #El usuario tiene la opcion de colocar otra respuesta a la pregunta asignandolo como una variable "c"
+        while c != "":                                                                                                     #Si el usuario ingreso vacio el ciclo while no se cumple por lo cual se interpreta que no hay mas respuestas.
+            new_file.write(";" + c)                                                                                        #as respuestas distintas de una misma pregunta se escriben en un archivo txt y se sepran por un ;
+            c= input("\tSi la pregunta tiene otra respuesta ingresela aqui, sino solo presione ENTER: ")                   #nuevamente se le pregunta al usuario por si hay mas respuestas.
+        new_file.write("\n")                                                                                               #Se escribe enter en el archivo txt para pasar a la siguiente pregunta.
     new_file.close()                                                                                                       #Ya que toda la informacion se ha escrito dentro del archivo, el archivo se cierra con .close()
     
     q2 = input("¿Desea tomar un repaso de las cartas?: ")                                                                  #Aqui se pregunta si el usuario quiere repazar las cartas ahora mismo o si desea repazarlas mas tarde (que se vuelve la opcion C mas adelante)
@@ -41,7 +41,7 @@ if option_question == "A" or option_question == "a":                            
         print("\nHas terminado de repasar las cartas")                                                                     #Al haber terminado, se imprime este mensaje y termina el codigo
 
     elif q2 == "NO":                                                                                                       #Si la respuesta es "no", entonces se termina el programa e imprime el siguente mensaje
-        print("Gracias por usar nuestro app. Tus cartas se salvaron bajo el nombre que le asignaste al archivo para usarlas en otro tiempo.")
+        print("Gracias por usar nuestra app. Tus cartas se salvaron bajo el nombre que le asignaste al archivo para usarlas en otro tiempo.")
         
     elif q2 != "SI" or q2 != "NO":                                                                                         #Si el usuario responde algo que no sea "si" o "no", entonces se le presenta el error expresado en la siguente linea y termina el codigo
         raise ValueError("Solo se admiten respuestas: si o no")
