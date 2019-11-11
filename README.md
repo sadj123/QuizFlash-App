@@ -8,7 +8,7 @@ Se puede ejecutar de dos maneras sin embargo dependiendo desde donde se ejecute 
 
 Si ejecuta el codigo principal "MasterCode" la herramienta se abrira en la consola de Python y podra hacer uso de ella con todas sus funciones.
 
-Por otra parte la puede ejecutar desde el codigo "Interfaz", la interfaz es un proceso largo y limita un poco la herramienta como en aspectos donde solo admite una respuesta.
+Por otra parte la puede ejecutar desde el codigo "Interfaz", la interfaz es un proceso largo y limita un poco la herramienta como en aspectos donde solo admite una respuesta. NO ESTÁ TERMINADA AL 100% PERO EL CODIGO PRINCIPAL SI. ESTA EN FASE BETA.
 
 Esperemos que les guste y les sea de mucha utilidad.
 
