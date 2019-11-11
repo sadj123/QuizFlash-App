@@ -12,12 +12,12 @@ def Flashcard_Review(file_name):                                                
 
     for i in lines:                                                              #Como el codigo recorre todo el archivo, por cada linea en el archivo, el codigo ejecutará este ciclo for
         (Q,A)=i.split(":")                                                       #Dentro del archivo, la pregunta y la respuesta estan separadas por ":" entonces el metodo split logra que el codigo entienda cual es la pregutna y cual es la respuesta de las cartas 
-        p= A.split(";")                                                          #El codigo tiene la opcion de que la pregunta tenga mas de una respuesta, entonces las otras respuestas estan separadas por ";" de nuevo el metodo split cumple la funcion de separlas 
-        z= len(p)                                                                ### 
-        k= p[z-1]                                                                ###
-        k= k.strip()                                                             ###
-        p.pop()                                                                  ###
-        p.append(k)                                                              ###
+        p= A.split(";")                                                          #El codigo tiene la opcion de que la pregunta tenga mas de una respuesta, entonces las otras respuestas estan separadas por ";" de nuevo el metodo split cumple la funcion de separlas y las almacena como una lista.
+        z= len(p)                                                                #Z el la cantidad de respuestas que hay.
+        k= p[z-1]                                                                #"k" es la ultima respuesta de la lista de respuestas.
+        k= k.strip()                                                             #La nueva ultima respuesta se le quitara el enter.
+        p.pop()                                                                  #A la lista de respuestas se le elimina la ultima.
+        p.append(k)                                                              #Y se le agrega la nueva respuesta modificada.
         q_and_a[Q] = p                                                           #Aqui las preguntas y sus respuestas van siendo agregadas al diccionario creado en la linea 7. La pregutnas se vuelve la llave y la respuesta el valor del diccionario 
 
     print("\nRecuerde que si quiere terminar, presiones ENTER. Al hacerlo, la respuesta automaticamente será incorrecta...")
