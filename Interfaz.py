@@ -241,41 +241,43 @@ def opcionQuiz():
 
 #-------------------------------------Repaso de flashcards----------------------------------------
 import random
-# No hemos podido terminar la implementación del repaso de flashcards y quizzes, pero los tendremos listos para la presentación.
+ No hemos podido terminar la implementación del repaso de flashcards y quizzes, pero los tendremos listos para la presentación.
 #def pantallaRepasoFlashcards(numero_flashcards):
 #    
-#
-#def abrirArchivo():
-#    archivoRepasoF = filedialog.askopenfilename(title= "Abra el archivo que contenga las Flashcards", filetypes = (("Archivos de texto","*.txt"),("Todos los archivos","*.*")))                                  
-#    archivoRepasoF.ope
-#def opcionRepasoFlashcards():
-#    global archivoRepaso_f
-#    lines = file.readlines()                                                     #El codigo lee el archivo linea por linea 
-#    q_and_a = {}                                                                 #Se crea un diccionario vacio asignado a la variable "q_and_a"
-#    lista=[]                                                                     #Se crea una lista vacia asignada a la variable "lista"
-#    count = 0                                                                    #Se crea un contador que va incrementando cada vez que el codigo pasa por el while loop en la linea 24
-#    count_right = 0                                                              #Se crea un contador que incrementa cada vez que el usuario acierta la pregunta
-#    count_wrong = 0                                                             #Se crea un contador que incrementa cada vez que el usuraio tenga una pregunta mala
-#
-#    for i in lines:                                                              #Como el codigo recorre todo el archivo, por cada linea en el archivo, el codigo ejecutará este ciclo for
-#        (Q,A)=i.split(":")                                                       #Dentro del archivo, la pregunta y la respuesta estan separadas por ":" entonces el metodo split logra que el codigo entienda cual es la pregutna y cual es la respuesta de las cartas 
-#        p= A.split(";")                                                          #El codigo tiene la opcion de que la pregunta tenga mas de una respuesta, entonces las otras respuestas estan separadas por ";" de nuevo el metodo split cumple la funcion de separlas 
-#        z= len(p)                                                                ### 
-#        k= p[z-1]                                                                ###
-#        k= k.strip()                                                             ###
-#        p.pop()                                                                  ###
-#        p.append(k)                                                              ###
-#        q_and_a[Q] = p                                                           #Aqui las preguntas y sus respuestas van siendo agregadas al diccionario creado en la linea 7. La pregutnas se vuelve la llave y la respuesta el valor del diccionario 
-#
-#    clear()
-#    crearVentana(3)
-#    texto = Label(framePrincipal, text = "Seleccione el archivo en el cual están las flashcards", pady = 40,bg ="#83EB53")
-#    texto.grid(row=1, column=1)
-#    seleccionar_archivo = Button(framePrincipal,text= "Seleccionar archivo", command = lambda: filedialog.askopenfilename(title= "Abra el archivo que contenga las Flashcards", filetypes = (("Archivos de texto","*.txt"),("Todos los archivos","*.*"))))
-#    seleccionar_archivo.grid(row=2,column=1)
-#    boton_continuar = Button(framePrincipa, text = Continuar, command = lambda:pantallaRepasoFlashcards(len(lineas)))
-#    boton_continuar.grid(row=3,column=1)
-#     
+
+def abrirArchivo():
+    global archivoRepasoF
+    archivoRepasoF = filedialog.askopenfilename(title= "Abra el archivo que contenga las Flashcards", filetypes = (("Archivos de texto","*.txt"),("Todos los archivos","*.*")))                                  
+    archivoRepasoF.open()
+def leerArchivo():
+    global archivoRepaso_f
+    lines = file.readlines()                                                     #El codigo lee el archivo linea por linea 
+    q_and_a = {}                                                                 #Se crea un diccionario vacio asignado a la variable "q_and_a"
+    lista=[]                                                                     #Se crea una lista vacia asignada a la variable "lista"
+    count = 0                                                                    #Se crea un contador que va incrementando cada vez que el codigo pasa por el while loop en la linea 24
+    count_right = 0                                                              #Se crea un contador que incrementa cada vez que el usuario acierta la pregunta
+    count_wrong = 0                                                             #Se crea un contador que incrementa cada vez que el usuraio tenga una pregunta mala
+
+    for i in lines:                                                              #Como el codigo recorre todo el archivo, por cada linea en el archivo, el codigo ejecutará este ciclo for
+        (Q,A)=i.split(":")                                                       #Dentro del archivo, la pregunta y la respuesta estan separadas por ":" entonces el metodo split logra que el codigo entienda cual es la pregutna y cual es la respuesta de las cartas 
+        p= A.split(";")                                                          #El codigo tiene la opcion de que la pregunta tenga mas de una respuesta, entonces las otras respuestas estan separadas por ";" de nuevo el metodo split cumple la funcion de separlas 
+        z= len(p)                                                                ### 
+        k= p[z-1]                                                                ###
+        k= k.strip()                                                             ###
+        p.pop()                                                                  ###
+        p.append(k)                                                              ###
+        q_and_a[Q] = p                                                           #Aqui las preguntas y sus respuestas van siendo agregadas al diccionario creado en la linea 7. La pregutnas se vuelve la llave y la respuesta el valor del diccionario 
+
+def opcionRepasoFlashcards():
+    clear()
+    crearVentana(3)
+    texto = Label(framePrincipal, text = "Seleccione el archivo en el cual están las flashcards", pady = 40,bg ="#83EB53")
+    texto.grid(row=1, column=1)
+    seleccionar_archivo = Button(framePrincipal,text= "Seleccionar archivo", command = lambda: filedialog.askopenfilename(title= "Abra el archivo que contenga las Flashcards", filetypes = (("Archivos de texto","*.txt"),("Todos los archivos","*.*"))))
+    seleccionar_archivo.grid(row=2,column=1)
+    boton_continuar = Button(framePrincipa, text = Continuar, command = lambda:pantallaRepasoFlashcards(len(lineas)))
+    boton_continuar.grid(row=3,column=1)
+     
     
     
     
