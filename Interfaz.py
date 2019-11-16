@@ -241,7 +241,14 @@ def opcionQuiz():
 
 #-------------------------------------Repaso de flashcards----------------------------------------
 import random
- No hemos podido terminar la implementación del repaso de flashcards y quizzes, pero los tendremos listos para la presentación.
+global count
+count = 0
+global count_right
+count_right = 0
+global count_wrong
+count_wrong = 0  
+
+# No hemos podido terminar la implementación del repaso de flashcards y quizzes, pero los tendremos listos para la presentación.
 #def pantallaRepasoFlashcards(numero_flashcards):
 #    
 
@@ -249,33 +256,103 @@ def abrirArchivo():
     global archivoRepasoF
     archivoRepasoF = filedialog.askopenfilename(title= "Abra el archivo que contenga las Flashcards", filetypes = (("Archivos de texto","*.txt"),("Todos los archivos","*.*")))                                  
     archivoRepasoF.open()
-def leerArchivo():
-    global archivoRepaso_f
-    lines = file.readlines()                                                     #El codigo lee el archivo linea por linea 
-    q_and_a = {}                                                                 #Se crea un diccionario vacio asignado a la variable "q_and_a"
-    lista=[]                                                                     #Se crea una lista vacia asignada a la variable "lista"
-    count = 0                                                                    #Se crea un contador que va incrementando cada vez que el codigo pasa por el while loop en la linea 24
-    count_right = 0                                                              #Se crea un contador que incrementa cada vez que el usuario acierta la pregunta
-    count_wrong = 0                                                             #Se crea un contador que incrementa cada vez que el usuraio tenga una pregunta mala
 
-    for i in lines:                                                              #Como el codigo recorre todo el archivo, por cada linea en el archivo, el codigo ejecutará este ciclo for
-        (Q,A)=i.split(":")                                                       #Dentro del archivo, la pregunta y la respuesta estan separadas por ":" entonces el metodo split logra que el codigo entienda cual es la pregutna y cual es la respuesta de las cartas 
-        p= A.split(";")                                                          #El codigo tiene la opcion de que la pregunta tenga mas de una respuesta, entonces las otras respuestas estan separadas por ";" de nuevo el metodo split cumple la funcion de separlas 
-        z= len(p)                                                                ### 
-        k= p[z-1]                                                                ###
-        k= k.strip()                                                             ###
-        p.pop()                                                                  ###
-        p.append(k)                                                              ###
-        q_and_a[Q] = p                                                           #Aqui las preguntas y sus respuestas van siendo agregadas al diccionario creado en la linea 7. La pregutnas se vuelve la llave y la respuesta el valor del diccionario 
+def leerRespuesta(respuesta_usuario,respuesta_correcta):
+    r_usuario = respuesta_usuario
+    r_usuario = r_usuario.lower()
+    clear()
+    if r_usuario == respuesta_correcta:
+        crearVentana(1)
+        correcta = Label(framePrincipal, text="Muy bien. Respuesta correcta",pady= 30, bg ="#83EB53")
+        correcta.grid(row=1,column=1)
+        count += 1                                                   
+        count_right += 1  
+    else:
+        crearVentana(2)
+        wrong = StringVar()
+        wrong = "La respuesta es incorrecta. La respuesta correcta era" + str(respuesta_correcta)
+        incorrecta = Label(framePrincipal, textvariable = wrong ,pady= 30, bg ="#83EB53")
+        incorrecta.grid(row=1,column=1)
+        count +=1
+        count_wrong +=1
+    pantallaRepasoFlashcards()
+    
+    
+
+def pantallaRepasoFlashcards():
+    global archivoRepasoF
+    lines = archivoRepasoF.readlines()                                                     
+    lista=[]                                                                     
+    count = 0                                                                   
+    count_right = 0                                                              
+    count_wrong = 0                                                            
+    for i in lines:                                                             
+        (Q,A)=i.split(":")                                                       
+        p= A.split(";")                                                           
+        z= len(p)                                                               
+        k= p[z-1]                                                                
+        k= k.strip()                                                             
+        p.pop()                                                                  
+        p.append(k)                                                              
+        q_and_a[Q] = p
+    
+        while True:
+            pick = random.choice(list(q_and_a.keys()))
+            if pick not in lista:
+                pregunta = pick
+                break
+        lista.append(pick) 
+    if count < len(lines):
+        clear()
+        crearVentana(4)
+        textosuperior = StringVar()                                            #Se declara una variable de texto
+        textosuperior.set("Flashcard "+ str(count))
+        arriba = Label(framePrincipal, textvariable = textosuperior,pady= 30, bg ="#83EB53")
+        arriba.grid(row=1,column=1)
+        preguntapantalla = Label(framePrincipal, text=pregunta, bg ="#83EB53")
+        preguntapantalla.grid(row=2, column = 1)
+        respuesta = Entry(framePrincipal)
+        respuesta.grid(row=3,column=1, pady=20)
+        boton_continuar = Button(framePrincipal, text = "Continuar", command = lambda:leerRespuesta(respuesta.get(),q_and_a[pick] ), pady=20)
+        boton_continuar.grid(row=4,column=1)
+    
+    else:
+        clear()
+        crearVentana(5)
+        superior= Label(framePrincipal, text= "Tus resultados son" ,pady= 30, bg ="#83EB53")
+        superior.grid(row=1,column=1)
+        correct_answers = StringVar()
+        correct_answers = "Respuestas correctas: " + str(count_right)
+        correctas = Label(framePrincipal, textvariable = correct_answers ,pady= 30, bg ="#83EB53")
+        correctas.grid(row=2,column=0)
+        wrong_answers = StringVar()
+        wrong_answers = "Respuestas incorrectas: " + str(count_right)
+        incorrectas = Label(framePrincipal, textvariable = wrong_answers ,pady= 30, bg ="#83EB53")
+        incorrectas.grid(row=3,column=0)
+        puntuacion = StringVar()
+        puntuacion = "Tu puntaje total fue: " + str((count_right/count)*5)
+        puntaje = Label(framePrincipal, textvariable = puntuacion ,pady= 30, bg ="#83EB53")
+        puntaje.grid(row=4,column=0)
+        porcentaje = StringVar()
+        porcentaje = "Tu porcentaje de aciertos fue: " + str((count_right/count)*100) +"%"
+        percentage = Label(framePrincipal, textvariable = puntuacion ,pady= 30, bg ="#83EB53")
+        percentage.grid(row=4,column=0)
+        
+
+            
+                                                     
+def elegirArchivo():
+    global archivoFlashcards
+    archivoFlashcards = filedialog.askopenfilename(title= "Abra el archivo que contenga las Flashcards", filetypes = (("Archivos de texto","*.txt"),("Todos los archivos","*.*")))
 
 def opcionRepasoFlashcards():
     clear()
     crearVentana(3)
     texto = Label(framePrincipal, text = "Seleccione el archivo en el cual están las flashcards", pady = 40,bg ="#83EB53")
     texto.grid(row=1, column=1)
-    seleccionar_archivo = Button(framePrincipal,text= "Seleccionar archivo", command = lambda: filedialog.askopenfilename(title= "Abra el archivo que contenga las Flashcards", filetypes = (("Archivos de texto","*.txt"),("Todos los archivos","*.*"))))
+    seleccionar_archivo = Button(framePrincipal,text= "Seleccionar archivo", command = lambda: elegirArchivo())
     seleccionar_archivo.grid(row=2,column=1)
-    boton_continuar = Button(framePrincipa, text = Continuar, command = lambda:pantallaRepasoFlashcards(len(lineas)))
+    boton_continuar = Button(framePrincipal, text = "Continuar", command = lambda:pantallaRepasoFlashcards(), pady=20)
     boton_continuar.grid(row=3,column=1)
      
     
