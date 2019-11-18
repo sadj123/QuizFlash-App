@@ -41,7 +41,7 @@ def Flashcard_Review(file_name):                                                
                 break                                                            #Cuando se presiona entre como respuesta, el codigo ejecuta el break para salir del loop. Despues de salir del loop, se ejecuta la primera linea afuera 
             
             else:                                                                #Si la respuesta es incorrecta, se ejectua este tramo de codigo 
-                print("La respuesta es incorrecta. La respuesta correcta es:", answer)  
+                print("La respuesta es incorrecta. La respuesta correcta es:", str(answer))  
                 lista.append(pick)                                               #Esta pregunta entonces se agrega a la lista para asegurar de que no vuelve a ser escogida aleatoreamente en la linea 25
                 count += 1                                                       #El count se incrementa
                 count_wrong += 1                                                 #Como la respuesta estuvo incorrecta se incremente el contador count_wrong 
