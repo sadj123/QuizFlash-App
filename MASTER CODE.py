@@ -1,65 +1,65 @@
 # FLASHCARD AND QUIZ APP FOR COMPUTER PROGRAMMING PROJECT 
 
 import FlashcardModule                                                                                                     #Como ya se creo el modulo "FlashcardModule" entonces se importarán funciones definidas dentro de dicho modulo
-#Las siguientes 4 lineas solamente imprime la introduccion al codigo, dandole la bienvenida al usuario y mostrandole las opciones que puede escoger
+                                                                                                                           #Las lineas de 4 a 9 imprimen la introduccion al codigo, dandole la bienvenida al usuario y mostrandole las opciones que puede escoger
 print("Bienvenido a la aplicacion de Flashcards y Quizzes")
 print("------------------------------------- \n")
 print("Las opciones son las siguientes:")
 print("\n A: Crear una baraja de Flashcards \n B: Crear o tomar un Quiz \n C: Si ya tienes una baraja de flashcards y deseas repasarla(No adimte la opción con un quiz)")
-option_question = input("Que opcion desearía ejecutar?: ")                                                                 #El codigo le pregunta al usuario cual de las opciones desea implementar y la guarda dentro de la variable "option_question"
+option_question = input("Que opcion desearía ejecutar?: ")                                                                 
 
-if option_question == "A" or option_question == "a":                                                                       #Si el usuario escoge la opcion A (independientemente si lo escribe con mayuscula o minuscula) entonces entra a este tramo de codigo
-    file_name = input("Por favor ingrese el nombre con el cual desea salvar el archivo: ")                                 #Aqui se le pide que el usuario ingreses el nombre del archivo donde se salvara la informacion. Para asi volver a usar la misma informacion en otro tiempo deseado 
-    new_file = open(file_name + ".txt", "w")                                                                               #Se abre el archivo ingresado y como tenemos el metodod "w" es un archivo en el cual se puede escribe 
-    from string import ascii_letters                                                                                       #Se importa la libreria string y solo se accede a la funcion de ascii_letters
-    h= ascii_letters                                                                                                       #La variable h se vuelve entonces cualquier letra que se encuentra en la libreria importada
-    ncards= input("¿Cuantas cartas desea crear?: ")                                                                        #Se le pregunta al usuario cuantas cartas quiere hacer y la respuesta se guarda dentro de la variable "ncacrds"
-    if ncards in h:                                                                                                        #Si el usuario no ingreso un numero sino una letra, el mensaje escrito en la proxima linea de codigo se muestra y el codigo termina ahí
+if option_question == "A" or option_question == "a":                                                                       # El programa ejecuta el bloque de codigo que se encuentra entre las lineas 11 a 47
+    file_name = input("Por favor ingrese el nombre con el cual desea salvar el archivo: ")                                 # Dentro de las lineas 11 a 21, se le pregunta al ususario el nombre del archivo con el cual lo quiere salvaro 
+    new_file = open(file_name + ".txt", "w")                                                                               # Despues se abre el archivo donde el programa va escribir las preguntas y respuestas de las cartas 
+    from string import ascii_letters                                                                                       # Se le pregunta al usuario cuantas cartas quiere hacer y si el usuario ingresa un entero negativo o una letra, le saldrá los error en las lineas 18 y 21
+    h= ascii_letters                                                                                                       
+    ncards= input("¿Cuantas cartas desea crear?: ")                                                                        
+    if ncards in h:                                                                                                        
         raise ValueError("Solo se puede recibir numeros positivos, {0} ni siquiera es un numero.".format(ncards))
-    num_of_cards = int(ncards)                                                                                             #Siempre y cuando el ususario ingrese un numero entero, este se guearda en una nueva variable para evitar confusion y mejorar la legibilidad del codigo
-    if num_of_cards <= 0:                                                                                                  #Si el usuario ingresa un numero entero negativo, se presentará el mensaje  que se encuentra en la siguiente linea de codigo
+    num_of_cards = int(ncards)                                                                                             
+    if num_of_cards <= 0:                                                                                                  
         raise ValueError("Solo se puede recibir numeros positivos, {0} no es positivo.".format(num_of_cards))
         
-    for i in range(num_of_cards):                                                                                          #Por cada numero de cartas creadas, el codigo dentro de este for loop se va a ejecutar
-        print("\nFlashcard",i + 1)
-        Q = input("\tPor favor ingrese la pregunta (No utilice signos de interrogación): ")                                #El usuario ingresa la pregunta
-        A = input("\tPor favor ingrese la respuesta correspondiente a la pregunta: ")                                      #El usuario entra la respuesta correspondiente 
-        A = A.lower()                                                                                                      #Para evitar confusion con letras mayusculas o minusculas, la respuesta que ingreso el usuario se convierte toda a minuscula 
-        new_file.write(Q + ":" + A)                                                                                        #Dentro de nuestro archivo, se escribirá la pregunta y la respuesta separados por un ":"
-        c= input("\tSi la pregunta tiene otra respuesta ingresela aqui, sino solo presione ENTER: ")                       #El usuario tiene la opcion de colocar otra respuesta a la pregunta asignandolo como una variable "c"
-        while c != "":                                                                                                     #Si el usuario ingreso vacio el ciclo while no se cumple por lo cual se interpreta que no hay mas respuestas.
-            new_file.write(";" + c)                                                                                        #as respuestas distintas de una misma pregunta se escriben en un archivo txt y se sepran por un ;
-            c= input("\tSi la pregunta tiene otra respuesta ingresela aqui, sino solo presione ENTER: ")                   #nuevamente se le pregunta al usuario por si hay mas respuestas.
-        new_file.write("\n")                                                                                               #Se escribe enter en el archivo txt para pasar a la siguiente pregunta.
-    new_file.close()                                                                                                       #Ya que toda la informacion se ha escrito dentro del archivo, el archivo se cierra con .close()
+    for i in range(num_of_cards):                                                                                          # El bloque de codigo entre las lineas 23 y 34 crea el numero de cartas que el usuario ingreso 
+        print("\nFlashcard",i + 1)                                                                                         # Tambien, si es que la pregunta tiene mas de una respuesta, el usuario la puede ingresar
+        Q = input("\tPor favor ingrese la pregunta (No utilice signos de interrogación): ")                                # Al mismo tiempo, la inforamcion se va guardando dentro del archivo, que se cierra cuando se termien de crear las cartas 
+        A = input("\tPor favor ingrese la respuesta correspondiente a la pregunta: ")                                      
+        A = A.lower()                                                                                                       
+        new_file.write(Q + ":" + A)                                                                                        
+        c= input("\tSi la pregunta tiene otra respuesta ingresela aqui, sino solo presione ENTER: ")                       
+        while c != "":                                                                                                     
+            new_file.write(";" + c)                                                                                        
+            c= input("\tSi la pregunta tiene otra respuesta ingresela aqui, sino solo presione ENTER: ")                   
+        new_file.write("\n")                                                                                               
+    new_file.close()                                                                                                       
     
     q2 = input("¿Desea tomar un repaso de las cartas?: ")                                                                  #Aqui se pregunta si el usuario quiere repazar las cartas ahora mismo o si desea repazarlas mas tarde (que se vuelve la opcion C mas adelante)
     q2= q2.upper()                                                                                                         #Vuelve el input del usuario a letras mayusculas para que el codigo entienda y no haya confusiones
 
-    if q2 == "SI":                                                                                                         #Si la respuesta es "si" se ejecutan las proximas 2 lineas
-        FlashcardModule.Flashcard_Review(file_name)                                                                        #Se usa la funcion "Flashcard_Review" definida en el modulo importado al principio del codigo. Esta funcion repasa las cartas en un orden aleatorio
-        print("\nHas terminado de repasar las cartas")                                                                     #Al haber terminado, se imprime este mensaje y termina el codigo
+    if q2 == "SI":                                                                                                         #Si la respuesta es "si" se ejecutan las lineas 40-41 acceden a una funcion dentro del modulo definido antes que permite revisar las cartas  
+        FlashcardModule.Flashcard_Review(file_name)                                                                        
+        print("\nHas terminado de repasar las cartas")                                                                     
 
-    elif q2 == "NO":                                                                                                       #Si la respuesta es "no", entonces se termina el programa e imprime el siguente mensaje
+    elif q2 == "NO":                                                                                                       #Si la respuesta es "no", entonces se termina el programa e imprime el mensaje en la linea 44
         print("Gracias por usar nuestra app. Tus cartas se salvaron bajo el nombre que le asignaste al archivo para usarlas en otro tiempo.")
         
-    elif q2 != "SI" or q2 != "NO":                                                                                         #Si el usuario responde algo que no sea "si" o "no", entonces se le presenta el error expresado en la siguente linea y termina el codigo
+    elif q2 != "SI" or q2 != "NO":                                                                                         #Si el usuario responde algo que no sea "si" o "no", entonces se le presenta el error expresado en la linea 47 
         raise ValueError("Solo se admiten respuestas: si o no")
 
-elif option_question == "B" or option_question == "b":                                                                     #Si el usuario escoge la opcion B (independientemente si lo escribe con mayuscula o minuscula) entonces entra a este tramo de codigo   
-    print("\n B1: Crear un Quiz \n B2: Tomar un quiz")                                                                     #Como la parte B del programa consiste en dos sub partes, se imprimen las 2 opciones para que el usuario escoge una de las 2
-    q3 = input("Que opcion desearía ejecutar?: ")                                                                          #La respuesta se guarda en la variable "q3"
+elif option_question == "B" or option_question == "b":                                                                     #Si el usuario escoge la opcion B entonces se ejecuta el bloque de codigo de la linea 50 hasta 98   
+    print("\n B1: Crear un Quiz \n B2: Tomar un quiz")                                                                     
+    q3 = input("Que opcion desearía ejecutar?: ")                                                                          
     
-    if q3 == "B1" or q3 == "b1":                                                                                           #Si la opcion que escogio el usuario es b1 (independiente de mayuscula o minuscula) entonces entra en el tramo de codigo indentado
-        file_name = input("Por favor ingrese el nombre con el cual desea salvar el archivo: ")                             #Aqui se le pide que el usuario ingrese el nombre del archivo donde se salvara la informacion para usarla en otro tiempo  
-        new_file = open(file_name + ".txt", "w")                                                                           #Se abre el archivo y es un archivo en el cual se puede escribe debido a la "w"  
-        from string import ascii_letters                                                                                   #Se importa la libreria string y solo se accede a la funcion de ascii_letters
-        p= ascii_letters                                                                                                   #La variable p se vuelve entonces cualquier letra que se encuentra en la libreria importada
-        nquestions= input("¿Cuantas preguntas quieres crear?: ")                                                           #Se le pregunta al usuario cuantas preguntas para el quiz quiere hacer y se guarda a la variable "nquestions"
-        if nquestions in p:                                                                                                #Si lo que ingresa el ususario es una letra mas no in numero enetero,  el mensaje escrito en la siguiente linea de codigo se muestra
+    if q3 == "B1" or q3 == "b1":                                                                                           # Si la opcion que escogio el usuario es b1 entonces el programa ejecuta el bloque de codigo de la linea 53 hasta la 63 
+        file_name = input("Por favor ingrese el nombre con el cual desea salvar el archivo: ")                             # Donde se le pregunta al usuario el nombre con el cual quiere slavar el archivo donde la infroamcion se guardara   
+        new_file = open(file_name + ".txt", "w")                                                                           # Despues se abre el archivo donde el programa va escribir las preguntas  
+        from string import ascii_letters                                                                                   # Se le pregunta al usuario cuantas cartas quiere hacer y si el usuario ingresa un entero negativo o una letra, le saldrá los error en las lineas 60 y 63
+        p= ascii_letters                                                                                                   
+        nquestions= input("¿Cuantas preguntas quieres crear?: ")                                                           
+        if nquestions in p:                                                                                                
             raise ValueError("Solo se puede recibir numeros positivos, {0} ni siquiera es un numero.".format(nquestions))
-        num_of_questions = int(nquestions)                                                                                 #El numero de preguntas se guerda en una nueva variable siempre y cuando el usuario ingrese un numero entero. Esto se hace para evitar confusion mas adelante y mejorar la legibilidad del codigo 
-        if num_of_questions <= 0:                                                                                          #Si el usuario ingresa un numero entero negativo, se presentara el mensaje en la proxima linea de codigo
+        num_of_questions = int(nquestions)                                                                                  
+        if num_of_questions <= 0:                                                                                          
             raise ValueError("Solo se puede recibir numeros positivos, {0} no es positivo".format(num_of_questions))
     
         for i in range(num_of_questions):                                                                                  #Por cada pregunta, se ejecuta este for loop
