@@ -242,7 +242,7 @@ def opcionQuiz():
 #-------------------------------------Repaso de flashcards----------------------------------------
 import random
 global count
-count = 0
+count = 1
 global count_right
 count_right = 0
 global count_wrong
@@ -258,6 +258,9 @@ def abrirArchivo():
     archivoRepasoF.open()
 
 def leerRespuesta(respuesta_usuario,respuesta_correcta):
+    global count
+    global count_right
+    global count_wrong
     r_usuario = respuesta_usuario
     r_usuario = r_usuario.lower()
     clear()
@@ -280,12 +283,13 @@ def leerRespuesta(respuesta_usuario,respuesta_correcta):
     
 
 def pantallaRepasoFlashcards():
-    global archivoRepasoF
-    lines = archivoRepasoF.readlines()                                                     
-    lista=[]                                                                     
-    count = 0                                                                   
-    count_right = 0                                                              
-    count_wrong = 0                                                            
+    global archivoFlashcards
+    global count
+    global count_right
+    global count_wrong
+    lines = archivoFlashcards.readlines()                                                     
+    lista=[] 
+    q_and_a = {}                                                                                                                               
     for i in lines:                                                             
         (Q,A)=i.split(":")                                                       
         p= A.split(";")                                                           
@@ -301,8 +305,9 @@ def pantallaRepasoFlashcards():
             if pick not in lista:
                 pregunta = pick
                 break
+        r_correcta = q_and_a[pick] 
         lista.append(pick) 
-    if count < len(lines):
+    if count <= len(lines):
         clear()
         crearVentana(4)
         textosuperior = StringVar()                                            #Se declara una variable de texto
@@ -313,10 +318,10 @@ def pantallaRepasoFlashcards():
         preguntapantalla.grid(row=2, column = 1)
         respuesta = Entry(framePrincipal)
         respuesta.grid(row=3,column=1, pady=20)
-        boton_continuar = Button(framePrincipal, text = "Continuar", command = lambda:leerRespuesta(respuesta.get(),q_and_a[pick] ), pady=20)
+        boton_continuar = Button(framePrincipal, text = "Continuar", command = lambda:leerRespuesta(respuesta.get(),r_correcta), pady=20)
         boton_continuar.grid(row=4,column=1)
-    
-    else:
+        
+    elif count < len(lines):
         clear()
         crearVentana(5)
         superior= Label(framePrincipal, text= "Tus resultados son" ,pady= 30, bg ="#83EB53")
@@ -343,8 +348,9 @@ def pantallaRepasoFlashcards():
                                                      
 def elegirArchivo():
     global archivoFlashcards
-    archivoFlashcards = filedialog.askopenfilename(title= "Abra el archivo que contenga las Flashcards", filetypes = (("Archivos de texto","*.txt"),("Todos los archivos","*.*")))
-
+    archivoF = filedialog.askopenfilename(title= "Abra el archivo que contenga las Flashcards", filetypes = (("Archivos de texto","*.txt"),("Todos los archivos","*.*")))
+    archivoFlashcards = open(archivoF,"r")
+    
 def opcionRepasoFlashcards():
     clear()
     crearVentana(3)
@@ -386,4 +392,4 @@ def ventana_inicial():
     
 
 ventana_inicial()                                                               #Se comienza a ejecutar esta función que según el botón que oprimamos nos llevará a otras funciones.
-raizPrincipal.mainloop()                                                        #Se necesita el mainloop para que la interfaz esté siempre encendida y preparada para escuchar los eventos.            
+raizPrincipal.mainloop() 
