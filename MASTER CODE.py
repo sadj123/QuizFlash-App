@@ -36,7 +36,7 @@ if option_question == "A" or option_question == "a":                            
     q2 = input("¿Desea tomar un repaso de las cartas?: ")                                                                  #Aqui se pregunta si el usuario quiere repazar las cartas ahora mismo o si desea repazarlas mas tarde (que se vuelve la opcion C mas adelante)
     q2= q2.upper()                                                                                                         #Vuelve el input del usuario a letras mayusculas para que el codigo entienda y no haya confusiones
 
-    if q2 == "SI":                                                                                                         #Si la respuesta es "si" se ejecutan las lineas 40-41 acceden a una funcion dentro del modulo definido antes que permite revisar las cartas  
+    if q2 == "SI":                                                                                                         #Si la respuesta es "si" se ejecutan las lineas 40-41 que acceden a la funcion Flashcard_Review   
         FlashcardModule.Flashcard_Review(file_name)                                                                        
         print("\nHas terminado de repasar las cartas")                                                                     
 
@@ -50,7 +50,7 @@ elif option_question == "B" or option_question == "b":                          
     print("\n B1: Crear un Quiz \n B2: Tomar un quiz")                                                                     
     q3 = input("Que opcion desearía ejecutar?: ")                                                                          
     
-    if q3 == "B1" or q3 == "b1":                                                                                           # Si la opcion que escogio el usuario es b1 entonces el programa ejecuta el bloque de codigo de la linea 53 hasta la 63 
+    if q3 == "B1" or q3 == "b1":                                                                                           # Si la opcion que escogio el usuario es b1 entonces el programa ejecuta el bloque de codigo de la linea 53 hasta la 90 
         file_name = input("Por favor ingrese el nombre con el cual desea salvar el archivo: ")                             # Donde se le pregunta al usuario el nombre con el cual quiere slavar el archivo donde la infroamcion se guardara   
         new_file = open(file_name + ".txt", "w")                                                                           # Despues se abre el archivo donde el programa va escribir las preguntas  
         from string import ascii_letters                                                                                   # Se le pregunta al usuario cuantas cartas quiere hacer y si el usuario ingresa un entero negativo o una letra, le saldrá los error en las lineas 60 y 63
@@ -62,45 +62,45 @@ elif option_question == "B" or option_question == "b":                          
         if num_of_questions <= 0:                                                                                          
             raise ValueError("Solo se puede recibir numeros positivos, {0} no es positivo".format(num_of_questions))
     
-        for i in range(num_of_questions):                                                                                  #Por cada pregunta, se ejecuta este for loop
-            print("\nQuestion",i + 1)
-            Q = input("\tPor favor ingrese la pregunta (No utilice signos de interrogación): ")                            #Aqui el usuario escribe la pregunta
-            A = input("\tPor favor ingrese la respuesta correspondiente a la pregunta: ")                                  #Aqui ingresa la respuesta CORRECTA a la pregunta
-            A2 = input("\tPor favor ingrese una respuesta incorrecta: ")                                                   #Como un quiz tiene diferentes opciones de que escoger, aqui se ingresa una respuesta INCORRECTA que actuará como distractora 
-            A3 = input("\tPor favor ingrese una respuesta incorrecta: ")                                                   #Aqui se ingresa la segeunda respuesta INCORRECTA 
-            A4 = input("\tPor favor ingrese una respuesta incorrecta: ")                                                   #Aqui se ingresa la tercera respuesta INCORRECTA 
-            A = A.lower()                                                                                                  #La respuesta ingresada se cambia a minuscula para evitar confusion entra letra mayusculas y minusculas dentro del programa 
-            A2 = A2.lower()                                                                                                #La respuesta ingresada se cambia a minuscula para evitar confusion entra letra mayusculas y minusculas dentro del programa
-            A3 = A3.lower()                                                                                                #La respuesta ingresada se cambia a minuscula para evitar confusion entra letra mayusculas y minusculas dentro del programa
-            A4 = A4.lower()                                                                                                #La respuesta ingresada se cambia a minuscula para evitar confusion entra letra mayusculas y minusculas dentro del programa
-            new_file.write(Q + ":" + A + ";" + A2 + ";" + A3 + ";" + A4 + "\n")                                            #Dentro del archivo, la pregunta y la respuesta correcta se separa via un ":" mientras que las respuesta incorrectas se separan por un ";"
-        new_file.close()                                                                                                   #Cuando todas las preguntas con sus opciones de respuestas hayan sido escritas, entonces se cierra el archivo
+        for i in range(num_of_questions):                                                                                  #Por cada numero de preguntas, se ejecutan las lineas 65 hasta 77 
+            print("\nQuestion",i + 1)                                                                                      # Que le pregunta al usuario ingresar la pregunta y las cuatro posibles respuestas del quiz
+            Q = input("\tPor favor ingrese la pregunta (No utilice signos de interrogación): ")                            # Teniendo en cuenta de que la primera res´puesta es la correcta mientras las otras tres son incorrectas y actuan como distractoras  
+            A = input("\tPor favor ingrese la respuesta correspondiente a la pregunta: ")                                  # Al final, todo lo que ingrese el usuario se salva dentro del archivo, y el archivo se cierra
+            A2 = input("\tPor favor ingrese una respuesta incorrecta: ")                                                    
+            A3 = input("\tPor favor ingrese una respuesta incorrecta: ")                                                    
+            A4 = input("\tPor favor ingrese una respuesta incorrecta: ")                                                    
+            A = A.lower()                                                                                                  
+            A2 = A2.lower()                                                                                                
+            A3 = A3.lower()                                                                                                
+            A4 = A4.lower()                                                                                                
+            new_file.write(Q + ":" + A + ";" + A2 + ";" + A3 + ";" + A4 + "\n")                                            
+        new_file.close()                                                                                                   
         
         q4 = input("La creación del quiz ha finalizado ¿Desea tomar un repaso del quiz?: ")                                #Se le pregunta al usuario si quiere realizar un repaso del quiz para ver como quedo
-        q4 = q4.upper()                                                                                                    #La respuesta se cambia a mayusculas para que el codigo entienda y evitar confusiones 
+        q4 = q4.upper()                                                                                                     
         
-        if q4 == "SI":                                                                                                     #Si la respuesta guardada en la variable "q4" es "si", se ejecutaran las proximas 2 lineas de codigo
-            FlashcardModule.Quiz_Review(file_name)                                                                         #Se implementa la funcion "Quiz_Review" que se encuentra dentro del modulo importado al principio del codigo
-            print("\nHas terminado el quiz")                                                                               #Al terminar el repaso se imprime esta linea de codigo y el codigo termina 
+        if q4 == "SI":                                                                                                     #Si la respuesta es "si", se ejecutaran las lineas 83 a 84, donde se accede a la funcion Quiz_Review 
+            FlashcardModule.Quiz_Review(file_name)                                                                         
+            print("\nHas terminado el quiz")                                                                                
 
-        elif q4 == "NO":                                                                                                   #Si la respuesta es "no" se imprime el proximo mensaje
+        elif q4 == "NO":                                                                                                   #Si la respuesta es "no" se imprime el mensaje en la linea 87
             print("Gracias por usar nuestro app. Tu quiz se salvó bajo el nombre que le asignaste al archivo para usarlo o mandarlo en otro tiempo.")
         
-        elif q4 != "SI" or q2 != "NO":                                                                                     #Si el usuario no responde con un "si" o "no" entonces se muestra el error escrito en la siguiente linea 
+        elif q4 != "SI" or q2 != "NO":                                                                                     #Si el usuario no responde con un "si" o "no" entonces se muestra el error escrito en la linea 90 
             raise ValueError("Solo se admiten respuestas: si o no")
         
-    elif q3 == "B2" or q3 == "b2":                                                                                         #Si la opcion que escogió el usuario es b2 (independiente de mayuscula o minuscula) entonces entra en el tramo de codigo indentado
-        chosen_file = input("Por favor Ingrese el nombre del archivo: ")                                                   #Como la informacion se salvó en un archivo, entonces para accederlo, el codigo le pide al ususario que ingrese el nombre de dicho archivo
-        FlashcardModule.Quiz_Review(chosen_file)                                                                           #Siempre cuando exista el archivo que el usuario ingresa, el nombre se ingresa en la funcion "Quiz_Review" 
-        print("\nHas terminado repasando las cartas")                                                                      #Al terminar el quiz, se imprime esta linea de codigo y el codigo termina 
+    elif q3 == "B2" or q3 == "b2":                                                                                         #Si la opcion que escogió el usuario es b2 entonces el programa ejecuta el bloque de codigo encontrado de la lina 92 hasta la 98 
+        chosen_file = input("Por favor Ingrese el nombre del archivo: ")                                                   #Como la informacion se salvó en un archivo, entonces  el nombre de dicho archivo se usa en la funcion Quiz_Review 
+        FlashcardModule.Quiz_Review(chosen_file)                                                                            
+        print("\nHas terminado repasando las cartas")                                                                      
     
-    else:                                                                                                                  #Si el usuario no responde con una de las dos opciones "b1" o "b2", se presenta el siguiente error  
+    else:                                                                                                                  #Si el usuario no responde con una de las dos opciones "b1" o "b2", se presenta el error en la linea 98  
         raise ValueError(" Solo hay dos opciones: B1 & B2, {0} no es una de ellas".format(q3))
         
-elif option_question == "C" or option_question =="c":                                                                      #Si el usuario escoge la opcion C (independientemente si lo escribe con mayuscula o minuscula) entonces entra a este tramo de codigo   
-    chosen_file = input("Por favor Ingrese el nombre del archivo: ")                                                       #Como las cartas se guardaron dentro de un archivo, entonces se le pide al usuario el nombre de dicho archivo para acceder a la informacion 
-    FlashcardModule.Flashcard_Review(chosen_file)                                                                          #Siempre y cuando exista el archivo ingresado, el nombre se usa en la funcion "Flashcard_Review" 
-    print("\nHas terminado de repasar las cartas")                                                                         #Al terminar el quiz, se imprime esta linea de codigo terminando el codigo
-else:                                                                                                                      #Si el usuario pone una opcion que no sea A, B, C entocnes se imprime el error en la siguiente linea y termina el codigo 
+elif option_question == "C" or option_question =="c":                                                                      #Si el usuario escoge la opcion C entonces ejecuta las lineas 100 hasta 105  
+    chosen_file = input("Por favor Ingrese el nombre del archivo: ")                                                       # Donde se acceden a las cartas guardadas en un archivo. Cuyo nombre entra a la funcion Flashcard_Review
+    FlashcardModule.Flashcard_Review(chosen_file)                                                                          
+    print("\nHas terminado de repasar las cartas")                                                                         
+else:                                                                                                                      #Si el usuario pone una opcion que no sea A, B, C entonces se imprime el error en la linea 105 
     raise ValueError(" Solo hay tres opciones: A, B o C, {0} no es una de ellas".format(option_question))
     
