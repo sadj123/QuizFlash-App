@@ -394,10 +394,34 @@ global q_and_a_Q
 q_and_a_Q = {}
 global listaQ
 listaQ =[]
-def elegirArchivoQ():
+
+
+
+
+def pantallaQuiz(no_preguntas):
+    clear()
     global archivoQuiz
-    archivoQ = filedialog.askopenfilename(title= "Abra el archivo que contenga el quiz", filetypes = (("Archivos de texto","*.txt"),("Todos los archivos","*.*")))
-    archivoQuizz = open(archivoQ,"r")
+    global countQ
+    global count_right_Q
+    global count_wrong_Q
+    global q_and_a_Q
+    global listaQ
+    if countQ < no_preguntas:
+        while True:
+            pick = random.choice(list(q_and_a.keys()))
+            if pick not in listaQ:
+                pregunta = pick
+                break
+        quiz_questions = q_and_a_Q[pregunta]                                           
+        quiz_questions_2 = quiz_questions[:]                                     
+        dicto = {}
+        crearVentana(7)
+        textosuperior = StringVar()                                            
+        textosuperior.set("Pregunta "+ str(count+1))
+        arriba = Label(framePrincipal, textvariable = textosuperior,pady= 30, bg ="#83EB53")
+        arriba.grid(row=1,column=1)
+        opcion_correcta = Radiobutton(framePrincipal,)
+        
 
 def configurarArchivoQ():
     global archivoQuiz
@@ -416,15 +440,30 @@ def configurarArchivoQ():
         p.pop()                                                                  
         p.append(k)                                                              
         q_and_a[Q] = p
-    opcionRepasoQuiz(len(lines))
-
-
-
-
-
-
-
+    pantallaQuiz(len(lines))
     
+def elegirArchivoQ():
+    global archivoQuiz
+    archivoQ = filedialog.askopenfilename(title= "Abra el archivo que contenga el quiz", filetypes = (("Archivos de texto","*.txt"),("Todos los archivos","*.*")))
+    archivoQuizz = open(archivoQ,"r")
+    
+def opcionRepasoQuiz():
+    clear()
+    crearVentana(4)
+    texto = Label(framePrincipal, text = "Seleccione el archivo en el cual está el quiz", pady = 40,bg ="#83EB53")
+    texto.grid(row=1, column=1)
+    seleccionar_archivo = Button(framePrincipal,text= "Seleccionar archivo", command = lambda: elegirArchivoQ())
+    seleccionar_archivo.grid(row=2,column=1)
+    vacio = Label(framePrincipal, text= "",anchor="center", bg="#83EB53")
+    vacio.grid(row=3,column=1,padx=20,pady=20)
+    boton_continuar = Button(framePrincipal, text = "Continuar", command = lambda:configurarArchivoQ())
+    boton_continuar.grid(row=4,column=1)    
+
+
+
+
+
+ #----------------------------- Ventana inicial ---------------------------------------------------------------------   
 def ventana_inicial():  
     crearVentana(6)
     saludo = Label(framePrincipal, text= "Bienvenidos a FlashQuiz", cursor="dot",bg ="#83EB53")      
@@ -452,4 +491,4 @@ def ventana_inicial():
     
 
 ventana_inicial()                                                               #Se comienza a ejecutar esta función que según el botón que oprimamos nos llevará a otras funciones.
-raizPrincipal.mainloop()                                                        #Se necesita el mainloop para que la interfaz esté siempre encendida y preparada para escuchar los eventos.            
+raizPrincipal.mainloop()       
