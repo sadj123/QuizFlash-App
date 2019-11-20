@@ -276,6 +276,8 @@ def leerRespuesta(respuesta_usuario,respuesta_correcta,no_flashcards):
         boton_continuar.grid(row=2,column=1)
         count += 1                                                   
         count_right += 1
+        print(count)
+        print(count_right)
     
     else:
         crearVentana(2)
@@ -287,6 +289,8 @@ def leerRespuesta(respuesta_usuario,respuesta_correcta,no_flashcards):
         boton_continuar.grid(row=2,column=1)
         count +=1
         count_wrong +=1
+        print(count)
+        print(count_wrong)
     
     
     
@@ -330,7 +334,7 @@ def pantallaRepasoFlashcards(no_flashcards):
         correctas = Label(framePrincipal, textvariable = correct_answers ,pady= 30, bg ="#83EB53")
         correctas.grid(row=2,column=1)
         wrong_answers = StringVar()
-        wrong_answers.set("Respuestas incorrectas: " + str(count_right))
+        wrong_answers.set("Respuestas incorrectas: " + str(count_wrong))
         incorrectas = Label(framePrincipal, textvariable = wrong_answers ,pady= 30, bg ="#83EB53")
         incorrectas.grid(row=3,column=1)
         puntuacion = StringVar()
@@ -412,6 +416,8 @@ def pantallaQuiz(no_preguntas):
             if pick not in listaQ:
                 pregunta = pick
                 break
+        x = randint(1,4)
+        
         quiz_questions = q_and_a_Q[pregunta]                                           
         quiz_questions_2 = quiz_questions[:]                                     
         dicto = {}
@@ -420,7 +426,10 @@ def pantallaQuiz(no_preguntas):
         textosuperior.set("Pregunta "+ str(count+1))
         arriba = Label(framePrincipal, textvariable = textosuperior,pady= 30, bg ="#83EB53")
         arriba.grid(row=1,column=1)
-        opcion_correcta = Radiobutton(framePrincipal,)
+        r_correcta = StringVar()
+        r_correcta.set(str(quiz_questions[0]))
+        opcion_correcta = Radiobutton(framePrincipal,text=r_correcta, variable = varOPcion, value=1)
+        opcion_correcta.grid(row=x,column=1)
         
 
 def configurarArchivoQ():
