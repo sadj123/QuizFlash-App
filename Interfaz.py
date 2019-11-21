@@ -113,19 +113,22 @@ def ventana_cartas(entradaNombreTexto):
     pregunta1.grid(row=1,column=1)                                              #Se le pregunta al usuario cuántas flashcards desea crear
     entradaCartas = Entry(framePrincipal)
     entradaCartas.grid(row=2,column=1, pady=20)
-    continuar = Button(framePrincipal, text="Continuar", command=lambda:hacer_flashcards(entradaCartas.get()))
+    continuar = Button(framePrincipal, text="Continuar", command=lambda:hacer_flashcards(entradaCartas.get()),bg="#002C3E",fg="#F7F8F3")
     continuar.grid(row=3,column=1)
+    
 
           
 def opcionFlashcards():                                                         #Esta es la función que se ejecuta cuando se pulsa "Hacer flashcards" en la ventana principal
     clear()
     crearVentana(3)
-    pregunta= Label(framePrincipal, text = "Por favor ingrese el nombre con el cual desea guardar el archivo: ",bg ="#F7444E")
+    pregunta= Label(framePrincipal, text = "Por favor ingrese el nombre con el cual desea guardar el archivo: ",bg ="#F7444E",fg = "#F7F8F3")
     pregunta.grid(row=1,column=1)
+    pregunta.config(font=("", 18))
     entradaNombreTexto= Entry(framePrincipal)                                   #En esta función se le pregunta al usuario cómo quiere guardar el archivo.
     entradaNombreTexto.grid(row=2,column=1, pady=20)                            #Consta de una Label y una entrada de texto que se recopila para guardar el archivo con ese nombre más adelante
-    continuar = Button(framePrincipal, text="Continuar",command=lambda:ventana_cartas(entradaNombreTexto))
+    continuar = Button(framePrincipal, text="Continuar",command=lambda:ventana_cartas(entradaNombreTexto),bg="#002C3E",fg="#F7F8F3")
     continuar.grid(row=3,column=1,pady=30)
+    continuar.config(font=("",14))
 
 #-------------------------------Quiz-------------------------------------------------------
 global counter_quiz                                                             #Se crea la variable global que nos ayudará a saber en que pregunta vamos
@@ -583,3 +586,8 @@ def ventana_inicial():
     botonRepasoQuiz.grid(row=6,column=1,pady=8)
     botonRepasoQuiz.config(font=("",12))
 
+
+    
+
+ventana_inicial()                                                               #Se comienza a ejecutar esta función que según el botón que oprimamos nos llevará a otras funciones.
+raizPrincipal.mainloop()       
