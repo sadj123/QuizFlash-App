@@ -2,12 +2,12 @@ from tkinter import *
 from tkinter import filedialog
 
 raizPrincipal=Tk()                                                              #Se crea la raíz que es la ventana principal
-raizPrincipal.config(bg="#e7593b")
+raizPrincipal.config(bg="#F7444E")
 raizPrincipal.title("FlashQuiz App")
                      
 framePrincipal=Frame()                                                            #Se crea un frame que es donde se colocan todos los widgets que queremos
 framePrincipal.pack(expand=True, fill="both")
-framePrincipal.config(bg="#83EB53")
+framePrincipal.config(bg="#F7444E")
                       
 ancho = raizPrincipal.winfo_screenwidth()
 altura = raizPrincipal.winfo_screenheight()
@@ -16,9 +16,9 @@ raizPrincipal.geometry("%dx%d+0+0" % (ancho,altura))                            
 
 
 def crearVentana(numerolineas):
-    vacio = Label(framePrincipal, text= "",anchor="center", bg="#83EB53")        #Creamos etiquetas vacias arriba y abajo de todo para dejar márgenes.
+    vacio = Label(framePrincipal, text= "",anchor="center", bg="#F7444E")        #Creamos etiquetas vacias arriba y abajo de todo para dejar márgenes.
     vacio.grid(row=int(numerolineas+1),column=1,padx=20,pady=20)
-    vacio1 = Label(framePrincipal, text= "",anchor="center", bg="#83EB53")
+    vacio1 = Label(framePrincipal, text= "",anchor="center", bg="#F7444E")
     vacio1.grid(row=0,column=1,padx=20,pady=20)
     framePrincipal.grid_columnconfigure(1,weight = 1)                           #Hacemos esto para que al expandir la pantalla los elementos se mantengan centrados.
     framePrincipal.grid_rowconfigure(int(numerolineas+1),weight = 1)
@@ -59,7 +59,7 @@ def ultimaFlashcard(pregunta,respuesta):
     archivo.write(question + ":" + answer)
     clear()
     crearVentana(2)
-    mensaje_final=Label(framePrincipal, text = "Gracias por usar nuestro programa",bg ="#83EB53")
+    mensaje_final=Label(framePrincipal, text = "Gracias por usar nuestro programa",bg ="#F7444E")
     mensaje_final.grid(row=1,column=1)
     archivo.close()                                                            #Aquí se cierra el archivo
     cerrar_programa=Button(framePrincipal,text= "Cerrar", command = lambda:raizPrincipal.destroy())
@@ -72,13 +72,13 @@ def hacer_flashcards(numero_flashcards):                                        
         crearVentana(6)
         textosuperior = StringVar()
         textosuperior.set("Flashcard "+ str(contador))
-        arriba = Label(framePrincipal, textvariable=textosuperior,pady = 30,bg ="#83EB53") 
+        arriba = Label(framePrincipal, textvariable=textosuperior,pady = 30,bg ="#F7444E") 
         arriba.grid(row=1,column=1)
-        pregunta = Label(framePrincipal, text = "Ingrese la pregunta",bg ="#83EB53")
+        pregunta = Label(framePrincipal, text = "Ingrese la pregunta",bg ="#F7444E")
         pregunta.grid(row=2,column=1)
         entrada_pregunta = Entry(framePrincipal)
         entrada_pregunta.grid(row=3,column=1, pady=20)
-        respuesta_correcta = Label(framePrincipal, text = "Ingrese la respuesta correcta",bg ="#83EB53")
+        respuesta_correcta = Label(framePrincipal, text = "Ingrese la respuesta correcta",bg ="#F7444E")
         respuesta_correcta.grid(row=4,column=1)
         entrada_respuesta = Entry(framePrincipal)
         entrada_respuesta.grid(row=5,column=1, pady=20)       
@@ -87,17 +87,17 @@ def hacer_flashcards(numero_flashcards):                                        
         
     if contador == int(numero_flashcards):
         crearVentana(6)
-        pregunta = Label(framePrincipal, text = "Ingrese la pregunta",bg ="#83EB53")
+        pregunta = Label(framePrincipal, text = "Ingrese la pregunta",bg ="#F7444E")
         pregunta.grid(row=2,column=1)
         entrada_pregunta = Entry(framePrincipal)
         entrada_pregunta.grid(row=3,column=1, pady=20)
-        respuesta_correcta = Label(framePrincipal, text = "Ingrese la respuesta correcta",bg ="#83EB53")
+        respuesta_correcta = Label(framePrincipal, text = "Ingrese la respuesta correcta",bg ="#F7444E")
         respuesta_correcta.grid(row=4,column=1)
         entrada_respuesta = Entry(framePrincipal)
         entrada_respuesta.grid(row=5,column=1, pady=20)
         textosuperior = StringVar()
         textosuperior.set("Flashcard "+ str(contador))
-        arriba = Label(framePrincipal, textvariable=textosuperior,pady = 30,bg ="#83EB53") 
+        arriba = Label(framePrincipal, textvariable=textosuperior,pady = 30,bg ="#F7444E") 
         arriba.grid(row=1,column=1)
         boton_finalizar = Button(framePrincipal, text="Finalizar", command=lambda:ultimaFlashcard(entrada_pregunta,entrada_respuesta))
         boton_finalizar.grid(row=6,column=1)
@@ -109,7 +109,7 @@ def ventana_cartas(entradaNombreTexto):
     archivo = open(entradaNombreTexto.get() + ".txt", "w")                      #Se crea un archivo con el nombre que el usuario especificó
     clear()
     crearVentana(3)
-    pregunta1= Label(framePrincipal, text = "¿Cuántas cartas desea crear?",bg ="#83EB53")
+    pregunta1= Label(framePrincipal, text = "¿Cuántas cartas desea crear?",bg ="#F7444E")
     pregunta1.grid(row=1,column=1)                                              #Se le pregunta al usuario cuántas flashcards desea crear
     entradaCartas = Entry(framePrincipal)
     entradaCartas.grid(row=2,column=1, pady=20)
@@ -120,7 +120,7 @@ def ventana_cartas(entradaNombreTexto):
 def opcionFlashcards():                                                         #Esta es la función que se ejecuta cuando se pulsa "Hacer flashcards" en la ventana principal
     clear()
     crearVentana(3)
-    pregunta= Label(framePrincipal, text = "Por favor ingrese el nombre con el cual desea guardar el archivo: ",bg ="#83EB53")
+    pregunta= Label(framePrincipal, text = "Por favor ingrese el nombre con el cual desea guardar el archivo: ",bg ="#F7444E")
     pregunta.grid(row=1,column=1)
     entradaNombreTexto= Entry(framePrincipal)                                   #En esta función se le pregunta al usuario cómo quiere guardar el archivo.
     entradaNombreTexto.grid(row=2,column=1, pady=20)                            #Consta de una Label y una entrada de texto que se recopila para guardar el archivo con ese nombre más adelante
@@ -163,7 +163,7 @@ def ultimoQuiz(pregunta,rc,ri_1,ri_2,ri_3):                                     
     archivo_quiz.close()
     clear()
     crearVentana(2)
-    mensaje_final=Label(framePrincipal, text = "Gracias por usar nuestro programa",bg ="#83EB53")
+    mensaje_final=Label(framePrincipal, text = "Gracias por usar nuestro programa",bg ="#F7444E")
     mensaje_final.grid(row=1,column=1)
     cerrar_programa(framePrincipal,text="Cerrar programa", command = raizPrincipal.destroy())
     cerrr_programa.grid(row=2,column=1)
@@ -176,17 +176,17 @@ def crear_quizzes(numero_quizzes):
         crearVentana(10)
         textosuperior = StringVar()                                            #Se declara una variable de texto
         textosuperior.set("Pregunta "+ str(counter_quiz))
-        arriba = Label(framePrincipal, textvariable=textosuperior,pady = 30,bg ="#83EB53") 
+        arriba = Label(framePrincipal, textvariable=textosuperior,pady = 30,bg ="#F7444E") 
         arriba.grid(row=1,column=1)
-        pregunta = Label(framePrincipal, text = "Ingrese la pregunta",bg ="#83EB53")
+        pregunta = Label(framePrincipal, text = "Ingrese la pregunta",bg ="F7444E")
         pregunta.grid(row=2,column=1)
         entrada_pregunta = Entry(framePrincipal)
         entrada_pregunta.grid(row=3, column=1)
-        respuesta_correcta = Label(framePrincipal, text = "Ingrese la respuesta correcta",pady=25,bg ="#83EB53")
+        respuesta_correcta = Label(framePrincipal, text = "Ingrese la respuesta correcta",pady=25,bg ="#F7444E")
         respuesta_correcta.grid(row=4,column=1)
         entrada_rcorrecta = Entry(framePrincipal)
         entrada_rcorrecta.grid(row=5,column=1)
-        respuestas_incorrectas = Label(framePrincipal, text = "Ingrese 3 respuestas incorrectas",pady=25,bg ="#83EB53")
+        respuestas_incorrectas = Label(framePrincipal, text = "Ingrese 3 respuestas incorrectas",pady=25,bg ="#F7444E")
         respuestas_incorrectas.grid(row=6,column=1)
         entrada_rincorrecta1 = Entry(framePrincipal)
         entrada_rincorrecta1.grid(row=7,column=1,pady=10)
@@ -201,17 +201,17 @@ def crear_quizzes(numero_quizzes):
        crearVentana(10)
        textosuperior = StringVar()                                            #Se declara una variable de texto
        textosuperior.set("Pregunta "+ str(counter_quiz))
-       arriba = Label(framePrincipal, textvariable=textosuperior,pady = 30,bg ="#83EB53") 
+       arriba = Label(framePrincipal, textvariable=textosuperior,pady = 30,bg ="#F7444E") 
        arriba.grid(row=1,column=1)
-       pregunta = Label(framePrincipal, text = "Ingrese la pregunta",bg ="#83EB53")
+       pregunta = Label(framePrincipal, text = "Ingrese la pregunta",bg ="#F7444E")
        pregunta.grid(row=2,column=1)
        entrada_pregunta = Entry(framePrincipal)
        entrada_pregunta.grid(row=3, column=1)
-       respuesta_correcta = Label(framePrincipal, text = "Ingrese la respuesta correcta",pady=25,bg ="#83EB53")
+       respuesta_correcta = Label(framePrincipal, text = "Ingrese la respuesta correcta",pady=25,bg ="#F7444E")
        respuesta_correcta.grid(row=4,column=1)
        entrada_rcorrecta = Entry(framePrincipal)
        entrada_rcorrecta.grid(row=5,column=1)
-       respuestas_incorrectas = Label(framePrincipal, text = "Ingrese 3 respuestas incorrectas",pady=25,bg ="#83EB53")
+       respuestas_incorrectas = Label(framePrincipal, text = "Ingrese 3 respuestas incorrectas",pady=25,bg ="#F7444E")
        respuestas_incorrectas.grid(row=6,column=1)
        entrada_rincorrecta1 = Entry(framePrincipal)
        entrada_rincorrecta1.grid(row=7,column=1,pady=10)
@@ -227,7 +227,7 @@ def ventana_nopreguntas(entradaNombreTexto):
     archivo_quiz = open(entradaNombreTexto.get() + ".txt", "w")
     clear()
     crearVentana(3)
-    pregunta1= Label(framePrincipal, text = "¿Cuántas preguntas desea crear?",bg ="#83EB53")
+    pregunta1= Label(framePrincipal, text = "¿Cuántas preguntas desea crear?",bg ="#F7444E")
     pregunta1.grid(row=1,column=1)                                              #Se le pregunta al usuario cuántas preguntas desea hacer
     nquestions = Entry(framePrincipal)
     nquestions.grid(row=2,column=1, pady=20)
@@ -237,7 +237,7 @@ def ventana_nopreguntas(entradaNombreTexto):
 def opcionQuiz():
     clear()                                                                     
     crearVentana(3)
-    pregunta= Label(framePrincipal, text = "Por favor ingrese el nombre con el cual desea guardar el archivo: ",bg ="#83EB53")
+    pregunta= Label(framePrincipal, text = "Por favor ingrese el nombre con el cual desea guardar el archivo: ",bg ="#F7444E")
     pregunta.grid(row=1,column=1)
     entradaNombreTexto= Entry(framePrincipal)                                   #Por medio de un Entry se le pide al usuario el nombre con el cual desea guardar el archivo
     entradaNombreTexto.grid(row=2,column=1, pady=20)
@@ -253,9 +253,7 @@ count_right = 0
 global count_wrong
 count_wrong = 0  
 
-# No hemos podido terminar la implementación del repaso de flashcards y quizzes, pero los tendremos listos para la presentación.
-#def pantallaRepasoFlashcards(numero_flashcards):
-#    
+
 
 def abrirArchivo():
     global archivoRepasoF
@@ -271,7 +269,7 @@ def leerRespuesta(respuesta_usuario,respuesta_correcta,no_flashcards):
     clear()
     if r_usuario in str(respuesta_correcta):
         crearVentana(2)
-        correcta = Label(framePrincipal, text="Muy bien. Respuesta correcta",pady= 30, bg ="#83EB53")
+        correcta = Label(framePrincipal, text="Muy bien. Respuesta correcta",pady= 30, bg ="#F7444E")
         correcta.grid(row=1,column=1) 
         boton_continuar = Button(framePrincipal, text = "Continuar", command = lambda:pantallaRepasoFlashcards(no_flashcards))
         boton_continuar.grid(row=2,column=1)
@@ -281,9 +279,11 @@ def leerRespuesta(respuesta_usuario,respuesta_correcta,no_flashcards):
     
     else:
         crearVentana(2)
+        a=","
+        a=a.join(respuesta_correcta)
         wrong = StringVar()
-        wrong.set("La respuesta es incorrecta. La respuesta correcta era: " + respuesta_correcta[0])
-        incorrecta = Label(framePrincipal, textvariable = wrong ,pady= 30, bg ="#83EB53")
+        wrong.set("La respuesta es incorrecta. La respuesta correcta era: " + str(a) )
+        incorrecta = Label(framePrincipal, textvariable = wrong ,pady= 30, bg ="#F7444E")
         incorrecta.grid(row=1,column=1)
         boton_continuar = Button(framePrincipal, text = "Continuar", command = lambda:pantallaRepasoFlashcards(no_flashcards))
         boton_continuar.grid(row=2,column=1)
@@ -306,14 +306,15 @@ def pantallaRepasoFlashcards(no_flashcards):
                 pregunta = pick
                 break
         r_correcta = q_and_a[pregunta] 
+        print (r_correcta)
         lista.append(pregunta)
         clear()
         crearVentana(4)
         textosuperior = StringVar()                                            #Se declara una variable de texto
         textosuperior.set("Flashcard "+ str(count))
-        arriba = Label(framePrincipal, textvariable = textosuperior,pady= 30, bg ="#83EB53")
+        arriba = Label(framePrincipal, textvariable = textosuperior,pady= 30, bg ="#F7444E")
         arriba.grid(row=1,column=1)
-        preguntapantalla = Label(framePrincipal, text=pregunta, bg ="#83EB53")
+        preguntapantalla = Label(framePrincipal, text=pregunta, bg ="#F7444E")
         preguntapantalla.grid(row=2, column = 1)
         respuesta = Entry(framePrincipal)
         respuesta.grid(row=3,column=1, pady=20)
@@ -323,23 +324,23 @@ def pantallaRepasoFlashcards(no_flashcards):
     else:
         clear()
         crearVentana(6)
-        superior= Label(framePrincipal, text= "Tus resultados son" ,pady= 30, bg ="#83EB53")
+        superior= Label(framePrincipal, text= "Tus resultados son" ,pady= 30, bg ="#F7444E")
         superior.grid(row=1,column=1)
         correct_answers = StringVar()
         correct_answers.set( "Respuestas correctas: " + str(count_right))
-        correctas = Label(framePrincipal, textvariable = correct_answers ,pady= 30, bg ="#83EB53")
+        correctas = Label(framePrincipal, textvariable = correct_answers ,pady= 30, bg ="#F7444E")
         correctas.grid(row=2,column=1)
         wrong_answers = StringVar()
         wrong_answers.set("Respuestas incorrectas: " + str(count_wrong))
-        incorrectas = Label(framePrincipal, textvariable = wrong_answers ,pady= 30, bg ="#83EB53")
+        incorrectas = Label(framePrincipal, textvariable = wrong_answers ,pady= 30, bg ="#F7444E")
         incorrectas.grid(row=3,column=1)
         puntuacion = StringVar()
         puntuacion.set("Tu puntaje total fue: " + str((count_right/(count-1))*5))
-        puntaje = Label(framePrincipal, textvariable = puntuacion ,pady= 30, bg ="#83EB53")
+        puntaje = Label(framePrincipal, textvariable = puntuacion ,pady= 30, bg ="#F7444E")
         puntaje.grid(row=4,column=1)
         porcentaje = StringVar()
         porcentaje.set("Tu porcentaje de aciertos fue: " + str((count_right/(count-1))*100) +"%")
-        percentage = Label(framePrincipal, textvariable = porcentaje ,pady= 30, bg ="#83EB53")
+        percentage = Label(framePrincipal, textvariable = porcentaje ,pady= 30, bg ="#F7444E")
         percentage.grid(row=5,column=1)
         
 def configuracionArchivo():
@@ -372,11 +373,11 @@ def elegirArchivo():
 def opcionRepasoFlashcards():
     clear()
     crearVentana(4)
-    texto = Label(framePrincipal, text = "Seleccione el archivo en el cual están las flashcards", pady = 40,bg ="#83EB53")
+    texto = Label(framePrincipal, text = "Seleccione el archivo en el cual están las flashcards", pady = 40,bg ="#F7444E")
     texto.grid(row=1, column=1)
     seleccionar_archivo = Button(framePrincipal,text= "Seleccionar archivo", command = lambda: elegirArchivo())
     seleccionar_archivo.grid(row=2,column=1)
-    vacio = Label(framePrincipal, text= "",anchor="center", bg="#83EB53")
+    vacio = Label(framePrincipal, text= "",anchor="center", bg="#F7444E")
     vacio.grid(row=3,column=1,padx=20,pady=20)
     boton_continuar = Button(framePrincipal, text = "Continuar", command = lambda:configuracionArchivo())
     boton_continuar.grid(row=4,column=1)
@@ -404,7 +405,7 @@ def revisarRespuestas(opcion,no_preguntas):
     clear()
     if opcion.get() == 1:
         crearVentana(2)
-        correcta = Label(framePrincipal, text="Muy bien. Respuesta correcta",pady= 30, bg ="#83EB53")
+        correcta = Label(framePrincipal, text="Muy bien. Respuesta correcta",pady= 30, bg ="#F7444E")
         correcta.grid(row=1,column=1) 
         boton_continuar = Button(framePrincipal, text = "Continuar", command = lambda:pantallaQuiz(no_preguntas))
         boton_continuar.grid(row=2,column=1)
@@ -414,7 +415,7 @@ def revisarRespuestas(opcion,no_preguntas):
         crearVentana(2)
         wrong = StringVar()
         wrong.set("La respuesta es incorrecta. La respuesta correcta era: " + str(quiz_questions[0]))
-        incorrecta = Label(framePrincipal, textvariable = wrong ,pady= 30, bg ="#83EB53")
+        incorrecta = Label(framePrincipal, textvariable = wrong ,pady= 30, bg ="#F7444E")
         incorrecta.grid(row=1,column=1)
         boton_continuar = Button(framePrincipal, text = "Continuar", command = lambda:pantallaQuiz(no_preguntas))
         boton_continuar.grid(row=2,column=1)
@@ -463,28 +464,28 @@ def pantallaQuiz(no_preguntas):
         crearVentana(7)
         textosuperior = StringVar()                                            
         textosuperior.set("Pregunta "+ str(countQ+1))
-        arriba = Label(framePrincipal, textvariable = textosuperior,pady= 30, bg ="#83EB53")
+        arriba = Label(framePrincipal, textvariable = textosuperior,pady= 30, bg ="#F7444E")
         arriba.grid(row=1,column=1)
-        escoja_pregunta = Label(framePrincipal, text = str(pregunta), pady = 20, bg ="#83EB53")
+        escoja_pregunta = Label(framePrincipal, text = str(pregunta), pady = 20, bg ="#F7444E")
         escoja_pregunta.grid(row=2,column=1)
         opcion = IntVar()
         r_correcta = StringVar()
         r_correcta.set(str(quiz_questions[0]))
-        opcion_correcta = Radiobutton(framePrincipal,textvariable =r_correcta, variable = opcion, value=1,bg="#83EB53")
+        opcion_correcta = Radiobutton(framePrincipal,textvariable =r_correcta, variable = opcion, value=1,bg="#F7444E")
         opcion_correcta.grid(row=x,column=1)
         r_incorrecta_1 = StringVar()
         r_incorrecta_1.set(quiz_questions_2[1])
-        opcion_incorrecta1 = Radiobutton(framePrincipal,textvariable =r_incorrecta_1, variable = opcion, value=2,bg="#83EB53")
+        opcion_incorrecta1 = Radiobutton(framePrincipal,textvariable =r_incorrecta_1, variable = opcion, value=2,bg="#F7444E")
         opcion_incorrecta1.grid(row=y,column=1)
         r_incorrecta_2 = StringVar()
         r_incorrecta_2.set(quiz_questions_2[2])
-        opcion_incorrecta2 = Radiobutton(framePrincipal,textvariable =r_incorrecta_2, variable = opcion, value=3,bg="#83EB53")
+        opcion_incorrecta2 = Radiobutton(framePrincipal,textvariable =r_incorrecta_2, variable = opcion, value=3,bg="#F7444E")
         opcion_incorrecta2.grid(row=w,column=1)
         r_incorrecta_3 = StringVar()
         r_incorrecta_3.set(quiz_questions_2[3])
-        opcion_incorrecta3 = Radiobutton(framePrincipal,textvariable =r_incorrecta_3, variable = opcion, value=4,bg="#83EB53")
+        opcion_incorrecta3 = Radiobutton(framePrincipal,textvariable =r_incorrecta_3, variable = opcion, value=4,bg="#F7444E")
         opcion_incorrecta3.grid(row=z,column=1)
-        vacio = Label(framePrincipal, text= "",anchor="center", bg="#83EB53")       
+        vacio = Label(framePrincipal, text= "",anchor="center", bg="#F7444E")       
         vacio.grid(row=7,column=7,padx=20,pady=20)
         boton_continuar = Button(framePrincipal, text = "Continuar", command = lambda:revisarRespuestas(opcion,no_preguntas))
         boton_continuar.grid(row=8,column=1)
@@ -492,23 +493,23 @@ def pantallaQuiz(no_preguntas):
     else:
         clear()
         crearVentana(6)
-        superior= Label(framePrincipal, text= "Tus resultados son" ,pady= 30, bg ="#83EB53")
+        superior= Label(framePrincipal, text= "Tus resultados son" ,pady= 30, bg ="#F7444E")
         superior.grid(row=1,column=1)
         correct_answers = StringVar()
         correct_answers.set( "Respuestas correctas: " + str(count_right_Q))
-        correctas = Label(framePrincipal, textvariable = correct_answers ,pady= 30, bg ="#83EB53")
+        correctas = Label(framePrincipal, textvariable = correct_answers ,pady= 30, bg ="#F7444E")
         correctas.grid(row=2,column=1)
         wrong_answers = StringVar()
         wrong_answers.set("Respuestas incorrectas: " + str(count_wrong_Q))
-        incorrectas = Label(framePrincipal, textvariable = wrong_answers ,pady= 30, bg ="#83EB53")
+        incorrectas = Label(framePrincipal, textvariable = wrong_answers ,pady= 30, bg ="#F7444E")
         incorrectas.grid(row=3,column=1)
         puntuacion = StringVar()
         puntuacion.set("Tu puntaje total fue: " + str((count_right_Q/(countQ))*5))
-        puntaje = Label(framePrincipal, textvariable = puntuacion ,pady= 30, bg ="#83EB53")
+        puntaje = Label(framePrincipal, textvariable = puntuacion ,pady= 30, bg ="#F7444E")
         puntaje.grid(row=4,column=1)
         porcentaje = StringVar()
         porcentaje.set("Tu porcentaje de aciertos fue: " + str((count_right_Q/(countQ))*100) +"%")
-        percentage = Label(framePrincipal, textvariable = porcentaje ,pady= 30, bg ="#83EB53")
+        percentage = Label(framePrincipal, textvariable = porcentaje ,pady= 30, bg ="#F7444E")
         percentage.grid(row=5,column=1)
         
         
@@ -541,11 +542,11 @@ def elegirArchivoQ():
 def opcionRepasoQuiz():
     clear()
     crearVentana(4)
-    texto = Label(framePrincipal, text = "Seleccione el archivo en el cual está el quiz", pady = 40,bg ="#83EB53")
+    texto = Label(framePrincipal, text = "Seleccione el archivo en el cual está el quiz", pady = 40,bg ="#F7444E")
     texto.grid(row=1, column=1)
     seleccionar_archivo = Button(framePrincipal,text= "Seleccionar archivo", command = lambda: elegirArchivoQ())
     seleccionar_archivo.grid(row=2,column=1)
-    vacio = Label(framePrincipal, text= "",anchor="center", bg="#83EB53")
+    vacio = Label(framePrincipal, text= "",anchor="center", bg="#F7444E")
     vacio.grid(row=3,column=1,padx=20,pady=20)
     boton_continuar = Button(framePrincipal, text = "Continuar", command = lambda:configurarArchivoQ())
     boton_continuar.grid(row=4,column=1)    
@@ -557,29 +558,28 @@ def opcionRepasoQuiz():
  #----------------------------- Ventana inicial ---------------------------------------------------------------------   
 def ventana_inicial():  
     crearVentana(6)
-    saludo = Label(framePrincipal, text= "Bienvenidos a FlashQuiz", cursor="dot",bg ="#83EB53")      
+    saludo = Label(framePrincipal, text= "Bienvenidos a FlashQuiz", cursor="dot",bg ="#F7444E", fg ="#F7F8F3")      
     saludo.grid(row=1,column=1,padx=20,pady=5)              #Creamos los textos que queremos mostrar y los ubicamos en la interfaz.
     saludo.config(font=("", 44))
     
-    saludo1 = saludo = Label(framePrincipal, text= "Elige la opción que quieres usar",bg ="#83EB53")
+    saludo1 = saludo = Label(framePrincipal, text= "Elige la opción que quieres usar",bg ="#F7444E",fg ="#F7F8F3")
     saludo1.grid(row=2,column=1, padx=10, pady=40)
     saludo.config(font=("", 25))
    
     
-    botonFlashcard=Button(framePrincipal, text="Crear Flashcards",relief = "groove",command=lambda: opcionFlashcards())    
-    botonFlashcard.grid(row=3,column=1,pady=8)              #Creamos los botones para que al pulsarlos el programa realice lo pertienente.
+    botonFlashcard=Button(framePrincipal, text="Crear Flashcards",relief = "groove",command=lambda: opcionFlashcards(),bg="#002C3E",fg="#F7F8F3")    
+    botonFlashcard.grid(row=3,column=1,pady=8)             #Creamos los botones para que al pulsarlos el programa realice lo pertienente.
+    botonFlashcard.config(font=("",12))
     
-    botonQuiz=Button(framePrincipal, text="Crear un Quiz",relief = "groove", command = lambda:opcionQuiz())
+    botonQuiz=Button(framePrincipal, text="Crear un Quiz",relief = "groove", command = lambda:opcionQuiz(),bg="#002C3E",fg="#F7F8F3")
     botonQuiz.grid(row=4,column=1,pady=8)
+    botonQuiz.config(font=("",12))
     
-    botonRepasar=Button(framePrincipal, text="Repasar flashcards",relief = "groove", command = lambda:opcionRepasoFlashcards())
+    botonRepasar=Button(framePrincipal, text="Repasar flashcards",relief = "groove", command = lambda:opcionRepasoFlashcards(),bg="#002C3E",fg="#F7F8F3")
     botonRepasar.grid(row=5,column=1,pady=8)
+    botonRepasar.config(font=("",12))
     
-    botonRepasoQuiz = Button(framePrincipal,text="Repasar un quizz",relief = "groove", command = lambda:opcionRepasoQuiz())
-    botonRepasoQuiz.grid(row=6,column=1,pady=8 )
+    botonRepasoQuiz = Button(framePrincipal,text="Repasar un quiz",relief = "groove", command = lambda:opcionRepasoQuiz(),bg="#002C3E",fg="#F7F8F3")
+    botonRepasoQuiz.grid(row=6,column=1,pady=8)
+    botonRepasoQuiz.config(font=("",12))
 
-
-    
-
-ventana_inicial()                                                               #Se comienza a ejecutar esta función que según el botón que oprimamos nos llevará a otras funciones.
-raizPrincipal.mainloop()       
