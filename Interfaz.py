@@ -59,11 +59,13 @@ def ultimaFlashcard(pregunta,respuesta):
     archivo.write(question + ":" + answer)
     clear()
     crearVentana(2)
-    mensaje_final=Label(framePrincipal, text = "Gracias por usar nuestro programa",bg ="#F7444E")
+    mensaje_final=Label(framePrincipal, text = "Gracias por usar nuestro programa",bg ="#F7444E",fg ="#F7F8F3")
     mensaje_final.grid(row=1,column=1)
+    mensaje_final.config(font=("",20))
     archivo.close()                                                            #Aquí se cierra el archivo
-    cerrar_programa=Button(framePrincipal,text= "Cerrar", command = lambda:raizPrincipal.destroy())
-    cerrar_programa.grid(row=2,column=1)                                        
+    cerrar_programa=Button(framePrincipal,text= "Cerrar", command = lambda:raizPrincipal.destroy(),bg="#002C3E", fg ="#F7F8F3")
+    cerrar_programa.grid(row=2,column=1)
+    cerrar_programa.config(font=("",18))                                        
     
 def hacer_flashcards(numero_flashcards):                                        #Esta función crea la pantalla donde va a estar la pregunta y la respuesta de la flashcard
     global contador                                                             #La única diferencia en los if es que si todavía no es la última flashcard, el botón dice "Continuar" y cuando es la última el botón dice "Finalizar" y cierra el archivo.
@@ -72,35 +74,43 @@ def hacer_flashcards(numero_flashcards):                                        
         crearVentana(6)
         textosuperior = StringVar()
         textosuperior.set("Flashcard "+ str(contador))
-        arriba = Label(framePrincipal, textvariable=textosuperior,pady = 30,bg ="#F7444E") 
+        arriba = Label(framePrincipal, textvariable=textosuperior,pady = 30,bg ="#F7444E", fg ="#002C3E") 
         arriba.grid(row=1,column=1)
-        pregunta = Label(framePrincipal, text = "Ingrese la pregunta",bg ="#F7444E")
+        arriba.config(font=("",25))
+        pregunta = Label(framePrincipal, text = "Ingrese la pregunta",bg ="#F7444E", fg ="#F7F8F3")
         pregunta.grid(row=2,column=1)
+        pregunta.config(font=("",18))
         entrada_pregunta = Entry(framePrincipal)
         entrada_pregunta.grid(row=3,column=1, pady=20)
-        respuesta_correcta = Label(framePrincipal, text = "Ingrese la respuesta correcta",bg ="#F7444E")
+        respuesta_correcta = Label(framePrincipal, text = "Ingrese la respuesta correcta",bg ="#F7444E", fg ="#F7F8F3")
         respuesta_correcta.grid(row=4,column=1)
+        respuesta_correcta.config(font=("",18))
         entrada_respuesta = Entry(framePrincipal)
         entrada_respuesta.grid(row=5,column=1, pady=20)       
-        boton_continuar = Button(framePrincipal, text="Continuar", command=lambda:guardarFlashcard(entrada_pregunta,entrada_respuesta,int(numero_flashcards)))
+        boton_continuar = Button(framePrincipal, text="Continuar", command=lambda:guardarFlashcard(entrada_pregunta,entrada_respuesta,int(numero_flashcards)),bg="#002C3E",fg ="#F7F8F3")
         boton_continuar.grid(row=6,column=1)
+        boton_continuar.config(font=("",16))
         
     if contador == int(numero_flashcards):
         crearVentana(6)
-        pregunta = Label(framePrincipal, text = "Ingrese la pregunta",bg ="#F7444E")
+        pregunta = Label(framePrincipal, text = "Ingrese la pregunta",bg ="#F7444E",fg ="#F7F8F3")
         pregunta.grid(row=2,column=1)
+        pregunta.config(font=("",18))
         entrada_pregunta = Entry(framePrincipal)
         entrada_pregunta.grid(row=3,column=1, pady=20)
-        respuesta_correcta = Label(framePrincipal, text = "Ingrese la respuesta correcta",bg ="#F7444E")
+        respuesta_correcta = Label(framePrincipal, text = "Ingrese la respuesta correcta",bg ="#F7444E", fg ="#F7F8F3")
         respuesta_correcta.grid(row=4,column=1)
+        respuesta_correcta.config(font=("",18))
         entrada_respuesta = Entry(framePrincipal)
         entrada_respuesta.grid(row=5,column=1, pady=20)
         textosuperior = StringVar()
         textosuperior.set("Flashcard "+ str(contador))
-        arriba = Label(framePrincipal, textvariable=textosuperior,pady = 30,bg ="#F7444E") 
+        arriba = Label(framePrincipal, textvariable=textosuperior,pady = 30,bg ="#F7444E",fg ="#002C3E") 
         arriba.grid(row=1,column=1)
-        boton_finalizar = Button(framePrincipal, text="Finalizar", command=lambda:ultimaFlashcard(entrada_pregunta,entrada_respuesta))
+        arriba.config(font=("",25))
+        boton_finalizar = Button(framePrincipal, text="Finalizar", command=lambda:ultimaFlashcard(entrada_pregunta,entrada_respuesta),bg="#002C3E",fg ="#F7F8F3")
         boton_finalizar.grid(row=6,column=1)
+        boton_finalizar.config(font=("",16))
         
         
 
@@ -109,13 +119,14 @@ def ventana_cartas(entradaNombreTexto):
     archivo = open(entradaNombreTexto.get() + ".txt", "w")                      #Se crea un archivo con el nombre que el usuario especificó
     clear()
     crearVentana(3)
-    pregunta1= Label(framePrincipal, text = "¿Cuántas cartas desea crear?",bg ="#F7444E")
+    pregunta1= Label(framePrincipal, text = "¿Cuántas cartas desea crear?",bg ="#F7444E", fg ="#F7F8F3")
     pregunta1.grid(row=1,column=1)                                              #Se le pregunta al usuario cuántas flashcards desea crear
+    pregunta1.config(font=("",18))
     entradaCartas = Entry(framePrincipal)
     entradaCartas.grid(row=2,column=1, pady=20)
     continuar = Button(framePrincipal, text="Continuar", command=lambda:hacer_flashcards(entradaCartas.get()),bg="#002C3E",fg="#F7F8F3")
     continuar.grid(row=3,column=1)
-    
+    continuar.config(font=("",14))
 
           
 def opcionFlashcards():                                                         #Esta es la función que se ejecuta cuando se pulsa "Hacer flashcards" en la ventana principal
@@ -571,23 +582,23 @@ def ventana_inicial():
    
     
     botonFlashcard=Button(framePrincipal, text="Crear Flashcards",relief = "groove",command=lambda: opcionFlashcards(),bg="#002C3E",fg="#F7F8F3")    
-    botonFlashcard.grid(row=3,column=1,pady=8)             #Creamos los botones para que al pulsarlos el programa realice lo pertienente.
+    botonFlashcard.grid(row=3,column=1,pady=8,ipadx=18)             #Creamos los botones para que al pulsarlos el programa realice lo pertienente.
     botonFlashcard.config(font=("",12))
     
     botonQuiz=Button(framePrincipal, text="Crear un Quiz",relief = "groove", command = lambda:opcionQuiz(),bg="#002C3E",fg="#F7F8F3")
-    botonQuiz.grid(row=4,column=1,pady=8)
+    botonQuiz.grid(row=4,column=1,pady=8,ipadx=32)
     botonQuiz.config(font=("",12))
     
-    botonRepasar=Button(framePrincipal, text="Repasar flashcards",relief = "groove", command = lambda:opcionRepasoFlashcards(),bg="#002C3E",fg="#F7F8F3")
-    botonRepasar.grid(row=5,column=1,pady=8)
+    botonRepasar=Button(framePrincipal, text="Repasar Flashcards",relief = "groove", command = lambda:opcionRepasoFlashcards(),bg="#002C3E",fg="#F7F8F3")
+    botonRepasar.grid(row=5,column=1,pady=8, ipadx=8)
     botonRepasar.config(font=("",12))
     
-    botonRepasoQuiz = Button(framePrincipal,text="Repasar un quiz",relief = "groove", command = lambda:opcionRepasoQuiz(),bg="#002C3E",fg="#F7F8F3")
-    botonRepasoQuiz.grid(row=6,column=1,pady=8)
+    botonRepasoQuiz = Button(framePrincipal,text="Repasar un Quiz",relief = "groove", command = lambda:opcionRepasoQuiz(),bg="#002C3E",fg="#F7F8F3")
+    botonRepasoQuiz.grid(row=6,column=1,pady=8,ipadx=20)
     botonRepasoQuiz.config(font=("",12))
 
 
     
 
 ventana_inicial()                                                               #Se comienza a ejecutar esta función que según el botón que oprimamos nos llevará a otras funciones.
-raizPrincipal.mainloop()       
+raizPrincipal.mainloop()   
