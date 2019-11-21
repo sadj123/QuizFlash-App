@@ -1,15 +1,11 @@
 # Proyecto-prog
 
-Bienvenidos a nuestra app de flashcard y quiz!
+Bienvenidos a QuizFlash App, nuestra app de flashcards y quizzzes!
 -----------------------------------------------------------
+Nuestro proyecto, después de un árduo trabajo ya está completamente listo.
 
-Nuestra herramienta funciona al 100%.
-Se puede ejecutar de dos maneras sin embargo dependiendo desde donde se ejecute funcionara de manera distinta.
+Esta herramienta funciona desde la consola, ejecutando el código llamado "MASTER CODE", teniendo en cuenta que el archivo "FlashcardModule" debe estar descargado en la misma carpeta para que funcione a la perfección.
 
-Si ejecuta el codigo principal "MasterCode" la herramienta se abrira en la consola de Python y podra hacer uso de ella con todas sus funciones.
-
-Por otra parte la puede ejecutar desde el codigo "Interfaz", la interfaz es un proceso largo y limita un poco la herramienta como en aspectos donde solo admite una respuesta. NO ESTÁ TERMINADA AL 100% PERO EL CODIGO PRINCIPAL SI. ESTA EN FASE BETA.
-
-Esperemos que les guste y les sea de mucha utilidad.
+Por otra parte, hemos diseñado una interfaz gráfica, para facilitar el uso de los usuarios, que también funciona al 100%.
 
 :)
