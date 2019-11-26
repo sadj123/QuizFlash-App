@@ -58,14 +58,17 @@ def ultimaFlashcard(pregunta,respuesta):
     answer.lower()
     archivo.write(question + ":" + answer)
     clear()
-    crearVentana(2)
-    mensaje_final=Label(framePrincipal, text = "Gracias por usar nuestro programa",bg ="#F7444E",fg ="#F7F8F3")
+    crearVentana(3)
+    mensaje_final=Label(framePrincipal, text = "Gracias por utilizar FlashQuiz App",bg ="#F7444E",fg ="#F7F8F3", pady = 20)
     mensaje_final.grid(row=1,column=1)
     mensaje_final.config(font=("",20))
     archivo.close()                                                            #Aquí se cierra el archivo
     cerrar_programa=Button(framePrincipal,text= "Cerrar", command = lambda:raizPrincipal.destroy(),bg="#002C3E", fg ="#F7F8F3")
-    cerrar_programa.grid(row=2,column=1)
-    cerrar_programa.config(font=("",18))                                        
+    cerrar_programa.grid(row=2,column=1,ipadx=55)
+    cerrar_programa.config(font=("",18))
+    inicio=Button(framePrincipal,text= "Pantalla de inicio", command = lambda:ventana_inicial(),bg="#002C3E", fg ="#F7F8F3")
+    inicio.grid(row=3,column=1, pady=10)
+    inicio.config(font=("",18))                                            
     
 def hacer_flashcards(numero_flashcards):                                        #Esta función crea la pantalla donde va a estar la pregunta y la respuesta de la flashcard
     global contador                                                             #La única diferencia en los if es que si todavía no es la última flashcard, el botón dice "Continuar" y cuando es la última el botón dice "Finalizar" y cierra el archivo.
@@ -82,11 +85,11 @@ def hacer_flashcards(numero_flashcards):                                        
         pregunta.config(font=("",18))
         entrada_pregunta = Entry(framePrincipal)
         entrada_pregunta.grid(row=3,column=1, pady=20)
-        respuesta_correcta = Label(framePrincipal, text = "Ingrese la respuesta correcta",bg ="#F7444E", fg ="#F7F8F3")
+        respuesta_correcta = Label(framePrincipal, text = "Ingrese la respuesta correcta",bg ="#F7444E", fg ="#F7F8F3", height=-1)
         respuesta_correcta.grid(row=4,column=1)
         respuesta_correcta.config(font=("",18))
         entrada_respuesta = Entry(framePrincipal)
-        entrada_respuesta.grid(row=5,column=1, pady=20)       
+        entrada_respuesta.grid(row=5,column=1,pady=20)       
         boton_continuar = Button(framePrincipal, text="Continuar", command=lambda:guardarFlashcard(entrada_pregunta,entrada_respuesta,int(numero_flashcards)),bg="#002C3E",fg ="#F7F8F3")
         boton_continuar.grid(row=6,column=1)
         boton_continuar.config(font=("",16))
@@ -139,7 +142,7 @@ def opcionFlashcards():                                                         
     entradaNombreTexto.grid(row=2,column=1, pady=20)                            #Consta de una Label y una entrada de texto que se recopila para guardar el archivo con ese nombre más adelante
     continuar = Button(framePrincipal, text="Continuar",command=lambda:ventana_cartas(entradaNombreTexto),bg="#002C3E",fg="#F7F8F3")
     continuar.grid(row=3,column=1,pady=30)
-    continuar.config(font=("",14))
+    continuar.config(font=("",16))
 
 #-------------------------------Quiz-------------------------------------------------------
 global counter_quiz                                                             #Se crea la variable global que nos ayudará a saber en que pregunta vamos
@@ -176,11 +179,16 @@ def ultimoQuiz(pregunta,rc,ri_1,ri_2,ri_3):                                     
     archivo_quiz.write(question + ":" + correcta + ";" + incorrecta1 + ";" + incorrecta2 + ";" +incorrecta3 + "\n")
     archivo_quiz.close()
     clear()
-    crearVentana(2)
-    mensaje_final=Label(framePrincipal, text = "Gracias por usar nuestro programa",bg ="#F7444E")
+    crearVentana(3)
+    mensaje_final=Label(framePrincipal, text = "Gracias por utilizar FlashQuiz App",bg ="#F7444E")
     mensaje_final.grid(row=1,column=1)
-    cerrar_programa(framePrincipal,text="Cerrar programa", command = raizPrincipal.destroy())
-    cerrr_programa.grid(row=2,column=1)
+    mensaje_final.config(font=("",20))
+    cerrar_programa=Button(framePrincipal,text="Cerrar programa", command = lambda:raizPrincipal.destroy(), bg="#002C3E",fg="#F7F8F3")
+    cerrar_programa.grid(row=2,column=1,pady=18)
+    cerrar_programa.config(font=("",18))
+    inicio=Button(framePrincipal,text= "Pantalla de inicio", command = lambda:ventana_inicial(),bg="#002C3E", fg ="#F7F8F3")
+    inicio.grid(row=3,column=1, pady=10)
+    inicio.config(font=("",18)) 
     
     
 def crear_quizzes(numero_quizzes):
@@ -190,73 +198,87 @@ def crear_quizzes(numero_quizzes):
         crearVentana(10)
         textosuperior = StringVar()                                            #Se declara una variable de texto
         textosuperior.set("Pregunta "+ str(counter_quiz))
-        arriba = Label(framePrincipal, textvariable=textosuperior,pady = 30,bg ="#F7444E") 
+        arriba = Label(framePrincipal, textvariable=textosuperior,pady = 30,bg ="#F7444E", fg ="#002C3E") 
         arriba.grid(row=1,column=1)
-        pregunta = Label(framePrincipal, text = "Ingrese la pregunta",bg ="F7444E")
+        arriba.config(font=("",25))
+        pregunta = Label(framePrincipal, text = "Ingrese la pregunta",bg ="#F7444E",fg ="#F7F8F3")
         pregunta.grid(row=2,column=1)
+        pregunta.config(font=("",18))
         entrada_pregunta = Entry(framePrincipal)
         entrada_pregunta.grid(row=3, column=1)
-        respuesta_correcta = Label(framePrincipal, text = "Ingrese la respuesta correcta",pady=25,bg ="#F7444E")
+        respuesta_correcta = Label(framePrincipal, text = "Ingrese la respuesta correcta",pady=25,bg ="#F7444E",fg ="#F7F8F3")
         respuesta_correcta.grid(row=4,column=1)
+        respuesta_correcta.config(font=("",18))
         entrada_rcorrecta = Entry(framePrincipal)
         entrada_rcorrecta.grid(row=5,column=1)
-        respuestas_incorrectas = Label(framePrincipal, text = "Ingrese 3 respuestas incorrectas",pady=25,bg ="#F7444E")
+        respuestas_incorrectas = Label(framePrincipal, text = "Ingrese 3 respuestas incorrectas",pady=25,bg ="#F7444E",fg ="#F7F8F3")
         respuestas_incorrectas.grid(row=6,column=1)
+        respuestas_incorrectas.config(font=("",18))
         entrada_rincorrecta1 = Entry(framePrincipal)
-        entrada_rincorrecta1.grid(row=7,column=1,pady=10)
+        entrada_rincorrecta1.grid(row=7,column=1)
         entrada_rincorrecta2 = Entry(framePrincipal)
         entrada_rincorrecta2.grid(row=8,column=1)
         entrada_rincorrecta3 = Entry(framePrincipal)
         entrada_rincorrecta3.grid(row=9,column=1,pady = 10)
-        boton_continuar = Button(framePrincipal, text="Continuar", command=lambda:guardarQuiz(entrada_pregunta,entrada_rcorrecta,entrada_rincorrecta1,entrada_rincorrecta2,entrada_rincorrecta3,int(numero_quizzes)))
+        boton_continuar = Button(framePrincipal, text="Continuar", command=lambda:guardarQuiz(entrada_pregunta,entrada_rcorrecta,entrada_rincorrecta1,entrada_rincorrecta2,entrada_rincorrecta3,int(numero_quizzes)),bg="#002C3E",fg="#F7F8F3")
         boton_continuar.grid(row=10,column=1)
+        boton_continuar.config(font=("",16))
         
-    if counter_quiz == int(numero_quizzes):                                     #Para la última pregunta el botón de "Continuar" se cambia por el de "Finalizar" y la funci´n que ejecuta cambia también.
+    if counter_quiz == int(numero_quizzes):                                     #Para la última pregunta el botón de "Continuar" se cambia por el de "Finalizar" y la función que ejecuta cambia también.
        crearVentana(10)
        textosuperior = StringVar()                                            #Se declara una variable de texto
        textosuperior.set("Pregunta "+ str(counter_quiz))
        arriba = Label(framePrincipal, textvariable=textosuperior,pady = 30,bg ="#F7444E") 
        arriba.grid(row=1,column=1)
-       pregunta = Label(framePrincipal, text = "Ingrese la pregunta",bg ="#F7444E")
+       arriba.config(font=("",25))
+       pregunta = Label(framePrincipal, text = "Ingrese la pregunta",bg ="#F7444E",fg ="#F7F8F3")
        pregunta.grid(row=2,column=1)
+       pregunta.config(font=("",18))
        entrada_pregunta = Entry(framePrincipal)
        entrada_pregunta.grid(row=3, column=1)
-       respuesta_correcta = Label(framePrincipal, text = "Ingrese la respuesta correcta",pady=25,bg ="#F7444E")
+       respuesta_correcta = Label(framePrincipal, text = "Ingrese la respuesta correcta",pady=25,bg ="#F7444E",fg ="#F7F8F3")
        respuesta_correcta.grid(row=4,column=1)
+       respuesta_correcta.config(font=("",18))
        entrada_rcorrecta = Entry(framePrincipal)
        entrada_rcorrecta.grid(row=5,column=1)
-       respuestas_incorrectas = Label(framePrincipal, text = "Ingrese 3 respuestas incorrectas",pady=25,bg ="#F7444E")
+       respuestas_incorrectas = Label(framePrincipal, text = "Ingrese 3 respuestas incorrectas",pady=25,bg ="#F7444E",fg ="#F7F8F3")
        respuestas_incorrectas.grid(row=6,column=1)
+       respuestas_incorrectas.config(font=("",18))
        entrada_rincorrecta1 = Entry(framePrincipal)
        entrada_rincorrecta1.grid(row=7,column=1,pady=10)
        entrada_rincorrecta2 = Entry(framePrincipal)
        entrada_rincorrecta2.grid(row=8,column=1)
        entrada_rincorrecta3 = Entry(framePrincipal)
        entrada_rincorrecta3.grid(row=9,column=1,pady = 10)
-       boton_continuar = Button(framePrincipal, text="Finalizar", command=lambda:ultimoQuiz(entrada_pregunta,entrada_rcorrecta,entrada_rincorrecta1,entrada_rincorrecta2,entrada_rincorrecta3))
+       boton_continuar = Button(framePrincipal, text="Finalizar", command=lambda:ultimoQuiz(entrada_pregunta,entrada_rcorrecta,entrada_rincorrecta1,entrada_rincorrecta2,entrada_rincorrecta3),bg="#002C3E",fg="#F7F8F3")
        boton_continuar.grid(row=10,column=1)
-        
+       boton_continuar.config(font=("",16))
+       
 def ventana_nopreguntas(entradaNombreTexto):
     global archivo_quiz
     archivo_quiz = open(entradaNombreTexto.get() + ".txt", "w")
     clear()
     crearVentana(3)
-    pregunta1= Label(framePrincipal, text = "¿Cuántas preguntas desea crear?",bg ="#F7444E")
-    pregunta1.grid(row=1,column=1)                                              #Se le pregunta al usuario cuántas preguntas desea hacer
+    pregunta1= Label(framePrincipal, text = "¿Cuántas preguntas desea crear?",bg ="#F7444E",fg ="#F7F8F3")
+    pregunta1.grid(row=1,column=1)                                             #Se le pregunta al usuario cuántas preguntas desea hacer
+    pregunta1.config(font=("",20))
     nquestions = Entry(framePrincipal)
     nquestions.grid(row=2,column=1, pady=20)
-    continuar = Button(framePrincipal, text="Continuar", command=lambda:crear_quizzes(nquestions.get()))
+    continuar = Button(framePrincipal, text="Continuar", command=lambda:crear_quizzes(nquestions.get()),bg="#002C3E",fg="#F7F8F3")
     continuar.grid(row=3,column=1)
+    continuar.config(font=("",16))
 
 def opcionQuiz():
     clear()                                                                     
     crearVentana(3)
-    pregunta= Label(framePrincipal, text = "Por favor ingrese el nombre con el cual desea guardar el archivo: ",bg ="#F7444E")
+    pregunta= Label(framePrincipal, text = "Por favor ingrese el nombre con el cual desea guardar el archivo: ",bg ="#F7444E",fg="#F7F8F3")
     pregunta.grid(row=1,column=1)
+    pregunta.config(font=("",20))
     entradaNombreTexto= Entry(framePrincipal)                                   #Por medio de un Entry se le pide al usuario el nombre con el cual desea guardar el archivo
     entradaNombreTexto.grid(row=2,column=1, pady=20)
-    continuar = Button(framePrincipal, text="Continuar",command=lambda:ventana_nopreguntas(entradaNombreTexto))
+    continuar = Button(framePrincipal, text="Continuar",command=lambda:ventana_nopreguntas(entradaNombreTexto),bg="#002C3E",fg="#F7F8F3")
     continuar.grid(row=3,column=1,pady=30)
+    continuar.config(font=("",16))
 
 #-------------------------------------Repaso de flashcards----------------------------------------
 import random
@@ -571,6 +593,7 @@ def opcionRepasoQuiz():
 
  #----------------------------- Ventana inicial ---------------------------------------------------------------------   
 def ventana_inicial():  
+    clear()
     crearVentana(6)
     saludo = Label(framePrincipal, text= "Bienvenidos a FlashQuiz", cursor="dot",bg ="#F7444E", fg ="#F7F8F3")      
     saludo.grid(row=1,column=1,padx=20,pady=5)              #Creamos los textos que queremos mostrar y los ubicamos en la interfaz.
@@ -582,23 +605,23 @@ def ventana_inicial():
    
     
     botonFlashcard=Button(framePrincipal, text="Crear Flashcards",relief = "groove",command=lambda: opcionFlashcards(),bg="#002C3E",fg="#F7F8F3")    
-    botonFlashcard.grid(row=3,column=1,pady=8,ipadx=18)             #Creamos los botones para que al pulsarlos el programa realice lo pertienente.
-    botonFlashcard.config(font=("",12))
+    botonFlashcard.grid(row=3,column=1,pady=8,ipadx=25)             #Creamos los botones para que al pulsarlos el programa realice lo pertienente.
+    botonFlashcard.config(font=("",16))
     
     botonQuiz=Button(framePrincipal, text="Crear un Quiz",relief = "groove", command = lambda:opcionQuiz(),bg="#002C3E",fg="#F7F8F3")
-    botonQuiz.grid(row=4,column=1,pady=8,ipadx=32)
-    botonQuiz.config(font=("",12))
+    botonQuiz.grid(row=4,column=1,pady=8,ipadx=41)
+    botonQuiz.config(font=("",16))
     
     botonRepasar=Button(framePrincipal, text="Repasar Flashcards",relief = "groove", command = lambda:opcionRepasoFlashcards(),bg="#002C3E",fg="#F7F8F3")
-    botonRepasar.grid(row=5,column=1,pady=8, ipadx=8)
-    botonRepasar.config(font=("",12))
+    botonRepasar.grid(row=5,column=1,pady=8, ipadx=10)
+    botonRepasar.config(font=("",16))
     
     botonRepasoQuiz = Button(framePrincipal,text="Repasar un Quiz",relief = "groove", command = lambda:opcionRepasoQuiz(),bg="#002C3E",fg="#F7F8F3")
-    botonRepasoQuiz.grid(row=6,column=1,pady=8,ipadx=20)
-    botonRepasoQuiz.config(font=("",12))
+    botonRepasoQuiz.grid(row=6,column=1,pady=8,ipadx=28)
+    botonRepasoQuiz.config(font=("",16))
 
 
     
 
 ventana_inicial()                                                               #Se comienza a ejecutar esta función que según el botón que oprimamos nos llevará a otras funciones.
-raizPrincipal.mainloop()   
+raizPrincipal.mainloop()
