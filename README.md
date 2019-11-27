@@ -1,4 +1,4 @@
-# Proyecto-prog
+# QuizFlash App
 
 Bienvenidos a QuizFlash App, nuestra app de flashcards y quizzzes!
 -----------------------------------------------------------
